@@ -262,23 +262,23 @@ it will behave like */
 // console.log(subarrays);
 
 
-// let arr = [1, 2, 3, 4, 5];
-// let subarrays = [];
-
-// for (let i = 0; i < arr.length; i++) {
-//     for (let j = i; j < arr.length; j++) {
-//         subarrays.push(arr.slice(i, j + 1));
-//     }
-// }
-
-// console.log("All subarrays:", subarrays);
-
 let arr = [1, 2, 3, 4, 5];
-let n = arr.length;
-let sum = 0;
+let subarrays = [];
 
-for (let i = 0; i < n; i++) {
-    sum += arr[i] * (i + 1) * (n - i);
+for (let i = 0; i < arr.length; i++) {
+    for (let j = i; j < arr.length; j++) {
+        subarrays.push(arr.slice(i, j + 1));
+    }
 }
 
-console.log("Sum of all subarrays:", sum);
+console.log("All subarrays:", subarrays);
+
+// let arr = [1, 2, 3, 4, 5];
+// let n = arr.length;
+// let sum = 0;
+
+// for (let i = 0; i < n; i++) {
+//     sum += arr[i] * (i + 1) * (n - i);
+// }
+
+// console.log("Sum of all subarrays:", sum);
