@@ -262,6 +262,7 @@ it will behave like */
 // console.log(subarrays);
 
 
+
 let arr = [1, 2, 3, 4, 5];
 let subarrays = [];
 
