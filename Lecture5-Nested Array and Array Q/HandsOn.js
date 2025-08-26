@@ -222,30 +222,30 @@ Print count of subarrays divisible by k */
 /* =========== NESTED ARRAY Day 2 =========== */
 // /Alternate Manner Matrix Traversal//
 
-function printElementsAlternately(mat, m, n) {
-  let result = [];
+// function printElementsAlternately(mat, m, n) {
+//   let result = [];
 
-  for (let i = 0; i < m; i++) {
-    if (i % 2 === 0) {
-      // Odd row index (1st, 3rd, etc → left to right)
-      for (let j = 0; j < n; j++) {
-        result.push(mat[i][j]);
-      }
-    } else {
-      // Even row index (2nd, 4th, etc → right to left)
-      for (let j = n - 1; j >= 0; j--) {
-        result.push(mat[i][j]);
-      }
-    }
-  }
-  console.log(result.join(" "));
-}
-let arr2 = [
-[1, 2],
-[2, 3]];
-let m = arr2.length;
-let n = arr2[0].length; 
-printElementsAlternately(arr2, m, n);
+//   for (let i = 0; i < m; i++) {
+//     if (i % 2 === 0) {
+//       // Odd row index (1st, 3rd, etc → left to right)
+//       for (let j = 0; j < n; j++) {
+//         result.push(mat[i][j]);
+//       }
+//     } else {
+//       // Even row index (2nd, 4th, etc → right to left)
+//       for (let j = n - 1; j >= 0; j--) {
+//         result.push(mat[i][j]);
+//       }
+//     }
+//   }
+//   console.log(result.join(" "));
+// }
+// let arr2 = [
+// [1, 2],
+// [2, 3]];
+// let m = arr2.length;
+// let n = arr2[0].length; 
+// printElementsAlternately(arr2, m, n);
 
 
 
@@ -268,17 +268,24 @@ printElementsAlternately(arr2, m, n);
 Question: Write a function to find the sum of all subarrays
 */
 function sumOfAllSubarrays(arr) {
-  let n = arr.length;
   let totalSum = 0;
+  let n = arr.length;
 
   for (let i = 0; i < n; i++) {
-    totalSum += arr[i] * (i + 1) * (n - i);
+    let currentSum = 0;
+    for (let j = i; j < n; j++) {
+      currentSum += arr[j];   
+      totalSum += currentSum;
+    }
   }
   return totalSum;
 }
 
 
-console.log(sumOfAllSubarrays([1, 2, 3]));
+console.log(sumOfAllSubarrays([1, 2, 3])); 
+
+//time complexity -> O(N)
+//Space complexity -> O(1)
 
 /*
 // Question : given a 2d matrix , reverse each odd columns and print it 
@@ -313,10 +320,12 @@ function reverseOddColumns(matrix) {
   return matrix;
 }
 
-let arr5 = [
+let arr = [
   [1, 2, 3, 4, 5, 6],
   [2, 6, 12, 43, 3, 5],
   [8, 10, 34, 23, 12, 8],
 ];
 
 console.log(reverseOddColumns(arr));
+//time complexity -> O(N*N)
+//Space complexity -> O(1)
