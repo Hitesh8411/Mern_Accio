@@ -333,3 +333,7 @@ END FUNCTION
 // deleteAllElements(cart);
 // console.log(cart); // Output: []
 
+
+
+/*===============Problem 7============== */
+
