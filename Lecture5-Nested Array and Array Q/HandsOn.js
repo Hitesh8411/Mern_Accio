@@ -267,15 +267,56 @@ printElementsAlternately(arr2, m, n);
 /* H.W
 Question: Write a function to find the sum of all subarrays
 */
-// function sumOfAllSubarrays(arr) {
-//   let n = arr.length;
-//   let totalSum = 0;
+function sumOfAllSubarrays(arr) {
+  let n = arr.length;
+  let totalSum = 0;
 
-//   for (let i = 0; i < n; i++) {
-//     totalSum += arr[i] * (i + 1) * (n - i);
-//   }
-//   return totalSum;
-// }
+  for (let i = 0; i < n; i++) {
+    totalSum += arr[i] * (i + 1) * (n - i);
+  }
+  return totalSum;
+}
 
 
-// console.log(sumOfAllSubarrays([1, 2, 3]));
+console.log(sumOfAllSubarrays([1, 2, 3]));
+
+/*
+// Question : given a 2d matrix , reverse each odd columns and print it 
+// input ===>
+[1,2,3,4,5,6],
+[2,6,12,43,3,5], 
+
+
+*/
+
+        
+function reverseOddColumns(matrix) {
+  let rows = matrix.length;
+  let cols = matrix[0].length;
+
+  
+  for (let j = 0; j < cols; j++) {
+    if (j % 2 === 1) {  
+      let top = 0;
+      let bottom = rows - 1;
+
+      
+      while (top < bottom) {
+        let temp = matrix[top][j];
+        matrix[top][j] = matrix[bottom][j];
+        matrix[bottom][j] = temp;
+        top++;
+        bottom--;
+      }
+    }
+  }
+  return matrix;
+}
+
+let arr5 = [
+  [1, 2, 3, 4, 5, 6],
+  [2, 6, 12, 43, 3, 5],
+  [8, 10, 34, 23, 12, 8],
+];
+
+console.log(reverseOddColumns(arr));
