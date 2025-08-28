@@ -102,27 +102,58 @@
 
 // given a sum k , find the longesr subarray whose sum is equal to k (retuur the length of this subarray)
 
-function longsubarraySum(arr,k){
-    let n =arr.length;
-    let maxSum =0 ;
+// function longsubarraySum(arr,k){
+//     let n =arr.length;
+//     let maxSum =0 ;
 
-    for (let i =0 ; i<n ; i++) {
-        let subarray =0;
-        for (let j =i ; j< n ; j++) {
-            subarray += arr[j] 
-            if ( subarray === k) {
-                let length = j - i + 1 ;
-                if (length > maxSum) {
-                    maxSum =length;
-                }
-            }
-        }
-    }
-     return maxSum;
+//     for (let i =0 ; i<n ; i++) {
+//         let subarray =0;
+//         for (let j =i ; j< n ; j++) {
+//             subarray += arr[j] 
+//             if ( subarray === k) {
+//                 let length = j - i + 1 ;
+//                 if (length > maxSum) {
+//                     maxSum =length;
+//                 }
+//             }
+//         }
+//     }
+//      return maxSum;
 
-}
-const arr2 = [1,2,-3,0,1,-1,1]
-let k = 0; 
-console.log(longsubarraySum(arr2,k))
+// }
+// const arr2 = [1,2,-3,0,1,-1,1]
+// let k = 0; 
+// console.log(longsubarraySum(arr2,k))
 
 //time complexity : O(n^2)
+
+// write a function to print all subarrays of size k 
+// current n = 5 and k = 3 how many subarrays are there of size k?
+
+
+
+// function printsubarrayksizee(arr,k){
+//     let n = arr.length;
+//     for (let i = 0; i <= n-k; i++){
+//         let subarray = [];
+//         for (let j =i ; j < i+k; j++) {
+            
+//            subarray.push(arr[j]);
+
+
+//         } console.log(subarray);
+
+//     }
+      
+//     }
+
+
+
+// const arr =[1,2,-3,0,1,-1,1];
+// let k =3;
+// console.log(printsubarrayksizee(arr,k))
+// above is remainning
+
+
+// function to print all subarrays of size k 
+
