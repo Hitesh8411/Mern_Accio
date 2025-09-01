@@ -241,11 +241,11 @@ const carObj = {
 // portFolioObj.addSkill("Python");
 // portFolioObj.showskills();
 
-const portFolioObj = {
-    name:"Hitesh",
-    skills:["c++","javascript","MERN"],
+// const portFolioObj = {
+//     name:"Hitesh",
+//     skills:["c++","javascript","MERN"],
 
-}
+// }
 
 
 
