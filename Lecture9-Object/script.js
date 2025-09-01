@@ -96,22 +96,24 @@
 
 
 // slice() - > gives substring ( almost same as substring but few differences)
-// str = "we' re going to see some methods of strings w";
-// console.log(str.slice(3,9));  // gives substring starting from index = 3 and ending at index = 8(9-1)
-// console.log(str.slice(3));  // gives substring starting from index = 3 and ending at last
-// console.log(str.slice("3")); // gives substring starting from index = 3 and ending at last
-// console.log(str.slice(-3,-9)); // gives empty string because -3 is greater than -9  
-// console.log(str.slice(-3));      // gives substring starting from index = length-3 and ending at last // give last 3 characters
-// console.log(str.slice(-3,1000)); // gives substring starting from index = length-3 and ending at last // give last 3 characters
-// console.log(str.slice(-100)); // gives whole string because -100 is less than -string length
-// console.log(str.slice(1000)); // gives empty string because 1000 is greater than string length 
-// console.log(str.slice(-9,-3)); // gives substring starting from index = length-9 and ending at index = length-4
-// console.log(str.slice(3,-3)); // gives substring starting from index = 3 and ending at index = length-4
-// console.log(str.slice(-3,0)); // gives empty string as end is smaller than start 
+str = "we' re going to see some methods of strings w";
+console.log(str.slice(3,9));  // gives substring starting from index = 3 and ending at index = 8(9-1)
+console.log(str.slice(3));  // gives substring starting from index = 3 and ending at last
+console.log(str.slice("3")); // gives substring starting from index = 3 and ending at last
+console.log(str.slice(-3,-9)); // gives empty string because -3 is greater than -9  
+console.log(str.slice(-3));      // gives substring starting from index = length-3 and ending at last // give last 3 characters
+console.log(str.slice(-3,1000)); // gives substring starting from index = length-3 and ending at last // give last 3 characters
+console.log(str.slice(-100)); // gives whole string because -100 is less than -string length
+console.log(str.slice(1000)); // gives empty string because 1000 is greater than string length 
+console.log(str.slice(-9,-3)); // gives substring starting from index = length-9 and ending at index = length-4
+console.log(str.slice(3,-3)); // gives substring starting from index = 3 and ending at index = length-4
+console.log(str.slice(-3,0)); // gives empty string as end is smaller than start 
 
 // split() -> splits the striing based on given character
 str = "we' ,re going to, see some methods of strings w";
 console.log(str.split(","));
+
+
 
 
 
