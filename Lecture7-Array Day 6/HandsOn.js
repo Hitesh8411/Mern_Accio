@@ -15,6 +15,7 @@
 // printAllSubarrays(arr);
 
 
+// Count subarrays 
 
 // Count subarrays with even sum
 // function countEvenSumSubarrays(arr) {
