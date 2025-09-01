@@ -212,6 +212,8 @@ showSkills() → a method that displays all the skills in one line, comma-separa
 addSkill(skillName) → a method that adds a new skill to the skills array. 
 */
 
+
+
 const portfolio = {
   name: "Piyush",
   skills: ["Javascript", "HTML", "CSS"],
