@@ -156,6 +156,7 @@ console.log({arr1});
 console.log("spreaded array: ", [0, ...arr1, 67, 678, 68]);
 
 /* HW: use spread operators with OBJECTS */
+// (solved in Handson file)
 
 
 

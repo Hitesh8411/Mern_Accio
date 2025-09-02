@@ -160,6 +160,7 @@ console.log("spreaded array: ", [0, ...arr1, 67, 678, 68]);
 
 /* HW: use spread operators with OBJECTS */
 
+
 // The spread operator (...) is used to expand (spread out) elements of an array or properties of an object into another array/object.
 
 /*Why do we use it?

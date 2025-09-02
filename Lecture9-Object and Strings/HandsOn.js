@@ -80,6 +80,7 @@ console.log(newUser);
 
 
 
+
 // // Reverse string
 // function reverseString(str) {
 //   let reversed = "";
@@ -89,6 +90,7 @@ console.log(newUser);
 //   return reversed;
 // }
 // console.log(reverseString("hello")); 
+
 
 // // Count vowels
 // function countVowels(str) {
