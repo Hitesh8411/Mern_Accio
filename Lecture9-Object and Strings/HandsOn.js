@@ -42,6 +42,7 @@
 // console.log(merged);
 
 
+
 /* ========== Spread Operator ========== */
 
 // The spread operator (...) is used to expand (spread out) elements of an array or properties of an object into another array/object.
