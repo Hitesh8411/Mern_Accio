@@ -159,3 +159,18 @@ console.log({arr1});
 console.log("spreaded array: ", [0, ...arr1, 67, 678, 68]);
 
 /* HW: use spread operators with OBJECTS */
+
+// The spread operator (...) is used to expand (spread out) elements of an array or properties of an object into another array/object.
+
+/*Why do we use it?
+Copying arrays/objects easily
+Instead of looping or using Object.assign, spread lets you make a shallow copy in one line
+- Merging arrays/objects
+You can combine multiple arrays or objects into one without concat() or Object.assign.
+-Adding new elements/properties
+Spread lets you keep the old data while adding more.
+-Overriding values
+If the same property appears twice, the last one wins.
+-Better readability & less code
+Instead of using functions like concat(), slice(), or Object.assign(), spread is shorter & cleaner.
+*/
