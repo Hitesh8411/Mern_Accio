@@ -6,7 +6,6 @@
 // 4 5 6 7 8
 // write a function to print above pattern
 
-
 // function printPattern(n) {
 //     console.log("1");
 //     for (let i = 2; i <= n; i++) {
@@ -16,15 +15,7 @@
 //         }
 //         console.log(line);
 //     }
-//    }
-
-
-
-
-
-
-
-
+//     }
 
 
 // Problem: Delete All Odd Numbers from an Array
@@ -69,5 +60,3 @@ function AbsDiffSum(N, myArr) {
   return Math.max(sumMin, sumMax);
 }
 console.log(AbsDiffSum(6, [1, 1, 5, 5, 8, 9]));
-
-
