@@ -71,6 +71,7 @@ NaN → Not-a-Number */
 // console.log(Boolean(NaN));
 
 
+
 /*Note :
   for logical AND (&&) -> in short circiting
   first falsy value or the last truthy value will be the output

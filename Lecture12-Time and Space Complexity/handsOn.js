@@ -272,6 +272,7 @@ while (low <= high) {
     }
 }
 
+
 console.log(`${target} index is ${index}`); 
   
 // key - > max -> right  and do low = mid +1

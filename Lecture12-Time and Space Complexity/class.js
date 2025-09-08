@@ -61,6 +61,7 @@ for(let i = 0; i < N; i++){
   }
 }
 
+
 if(firstIndexOf6 !== -1)
   console.log({firstIndexOf6, lastIndexOf6});
 else 
