@@ -195,6 +195,7 @@ console.log(arr4);
 // some functions of Arrays
 const iplTeams = ["CSK", "MI", "RCB", "SRH"];
 
+
 //add some elements
 //1
 console.log("PUSH: ", iplTeams.push("GT")); // insert at end
