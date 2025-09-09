@@ -206,6 +206,7 @@ iplTeams.unshift("KKR"); //insert at begining
 //1
 iplTeams.pop(); // deletes from end
 //2
+
 iplTeams.shift(); // deletes from begining
 
 console.log("IPL teams: ", iplTeams);
@@ -217,6 +218,7 @@ console.log("IPL teams: ", iplTeams);
 
 //slice
 // keeps all elements after first 2 elements
+
 console.log("Sliced: ", iplTeams.slice(2));
 // keeps 2 elements from end
 console.log("Negative Sliced: ", iplTeams.slice(-2));
