@@ -97,6 +97,8 @@ function lowerbound (arr, target) {
 /* SET in JS */
 let set = new Set ([1,2,4,4,5,6]);
 
+// map always maintain insertion order
+
 // method to add element in set
 set.add(200);
 set.add(2);
@@ -168,8 +170,23 @@ let arr3 = [2,3,4,1,0,1,2,3,4,5,10];
 /* Question: Find intersection & Union */
 let arr4 = [1,2,4,5,6,3], arr5 = [2,5,6,3,1,3];
 
-//intersection: 1,2,5,6
-//union: 1,2,3,4,5,6
+//intersection: 1,2,5,6,3
+//union: 1,2,3,4,5,6  (based on insertion order in set /map)
+
+let intersection =[];
+let arr4set = new Set(arr4);
+for (let i=0 ; i< arr5; i++) {
+  if(arr4set.has(arr5[i]))
+    intersection.push(arr5[i]);
+
+}
+intersection =[...new Set(intersection)];
+
+// another way to execute above line
+// let intsersectionSet = new Set ({intersection})
+// intersection = [...intersection];
+console.log({intersection})
+
 
 // const unionArr = [...new Set([...arr4, ...arr5])];
 const unionSet = new Set([...arr4, ...arr5]);
