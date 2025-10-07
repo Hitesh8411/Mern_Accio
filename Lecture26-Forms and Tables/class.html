@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forms</title>
+  </head>
+  <body>
+    <br />
+    <br />
+    <br />
+    <form novalidate>
+      <div>
+        <label for="name">Name</label>
+        <input
+          id="name"
+          type="text"
+          name="name"
+          placeholder="enter your full name"
+          required
+          autocomplete="name"
+        />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          placeholder="enter your email"
+          required
+          autocomplete="email"
+        />
+      </div>
+      <div>
+        <label for="phone">Phone number</label>
+        <input
+          id="phone"
+          type="number"
+          name="phone"
+          placeholder="enter without country code"
+          required
+          autocomplete=""
+        />
+      </div>
+      <div>
+        <label for="birth">Date of birth</label>
+        <input id="birth" name="birth" type="date" />
+      </div>
+
+      <div>
+        <label for="password">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="atleast 6 digits"
+        />
+      </div>
+      <label for="country">Country</label>
+      <select name="country" id="country">
+        <option value="">Select a country</option>
+        <option>India</option>
+        <option>China</option>
+        <option>America</option>
+        <option>UK</option>
+      </select>
+      <label for="cities">Cities</label>
+      <select name="country" id="country" multiple size="3">
+        <option value="">Select a country</option>
+        <option>Mumbai</option>
+        <option>Pune</option>
+        <option>Nagpur</option>
+        <option>Bangalore</option>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+
+    <div>
+      <h2>List of fruits</h2>
+      <p id="mango" data-product-id="abc1" data-price="10">
+        Mango - <span>10</span>
+      </p>
+      <p id="apple">Apple - <span>40</span></p>
+      <p id="banana">Banana - <span>30</span></p>
+    </div>
+    <script>
+      let mango = document.getElementById("mango");
+      console.log(mango.dataset.productId);
+      mango.dataset.color = "pink";
+      console.log(mango.dataset.color);
+    </script>
+
+    <!-- Question:
+        Make a form with above inputs in html only for posting a vacancy of security guard in Vishal mega mart
+
+        Instructions:
+
+        Create an HTML form that includes the following input fields:
+        Name (text input)
+        Email (email input)
+        Phone (number or tel input)
+        Location – a dropdown menu with options: Baner, Viman Nagar, Hadapsar, Hinjewadi
+        Resume Upload (file input)
+        Expected Salary (number input)
+        Current CTC (number input)
+        Previous Experience – a checkbox to indicate if the applicant has prior experience
+        Shift Preference – a radio button to choose between Morning Shift and Night Shift
+        Earliest Joining Date – a date picker input for when the applicant can start work
+
+        The form should be properly labeled, neatly aligned, and suitable for submitting 
+        applications for a Security Guard position at Vishal Mega Mart. 
+        -->
+
+    <table border="1">
+      <caption>
+        Marksheet
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">Student</th>
+          <th>Maths</th>
+          <th>Physix</th>
+          <th>Chem</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Bittu</th>
+          <td colspan="2">20</td>
+
+          <td>10</td>
+        </tr>
+        <tr>
+          <th rowspan="2">Indrajeet</th>
+          <td>100</td>
+          <td>100</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>60</td>
+          <td>70</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

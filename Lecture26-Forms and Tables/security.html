@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishal Mega Mart</title>
+</head>
+<body>
+    <form action="/submit">
+        <div>
+            <label for="name">Name</label>
+            <input type="name" placeholder="Enter Your name" >
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" placeholder="Enter valid email">
+        </div>
+        <div>
+            <label for="phone">Phone</label>
+            <input type="number" placeholder="enter without country-code">
+
+        </div>
+        <div>
+            <label for="location">Location</label>
+            <select name="location" id="location" required>
+                <option value="">Select a location</option>
+                <option value="baner">Baner</option>
+                <option value="vimannagar">Viman-Nagar</option>
+                <option value="hadapsar">Hadapsar</option>
+                <option value="hinjewadi">Hinjewadi</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="resume">Upload Your File</label>
+            <input type="file" id="resume" name="resume" required>
+        </div>
+
+         <div>
+            <label for="currentsalary">Expected Salary</label>
+            <input type="number" id="currentsalary" name="currentsalary" placeholder="Enter Current salary">
+        </div>
+
+        <div>
+            <label for="expectedsalary">Expected Salary</label>
+            <input type="number" id="expectedsalary" name="expectedsalary" placeholder="Enter Expected salary">
+        </div>
+
+        <div>
+            <label for="prevExp">I have previous experience</label>
+            <input type="checkbox" id="prevExp" name="prevExp" value="Yes">
+            <input type="checkbox" id="prevExp" name="prevExp" value="No">
+        </div>
+
+        <div>
+            <label for="morining">Morning shift</label>
+            <input type="radio" value="morning" required>
+        </div>
+
+        
+        <div>
+            <label for="night">Night shift</label>
+            <input type="radio" value="night" required>
+        </div>
+
+        <div>
+            <label for="joiningDate">Availabe To join</label>
+            <input type="date" placeholder="Enter the Earliest date">
+        </div>
+
+        <div>
+        <button type="Submit">SUBMIT</button>
+        </div>
+    </form>
+</body>
+</html>

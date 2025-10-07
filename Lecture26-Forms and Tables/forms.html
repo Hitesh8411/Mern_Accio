@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forms</title>
+  </head>
+  <body>
+    <form action="/submit">
+      <div>
+        <label for="name">Name :</label>
+        <input
+          id="name"
+          type="text"
+          name="name"
+          placeholder="enter your full name"
+          required
+          autocomplete="name"
+        />
+      </div>
+      <div></div>
+      <label for="email">Email :</label>
+      <input
+        id="email"
+        type="email"
+        name="email"
+        placeholder="Enter your mail"
+        required
+        autocomplete="email"
+      />
+      <div>
+        <label for="phone">Phone Number :</label>
+        <input
+          id="phone"
+          type="numer"
+          name="phone"
+          placeholder="enter without countery code required"
+          required
+          autocomplete="mobile"
+        />
+      </div>
+      <div>
+        <label for="birth">Date of birth</label>
+        <input id="birth" name="birth" type="date" />
+      </div>
+      <div>
+        <label for="password">password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="enter 6 digit password"
+        />
+      </div>
+        <div>
+            <label for="country">country</label>
+            <select name="country" id="country">
+                <option value="">select a country</option>
+                <option value="India"></option>
+                <option value="China"></option>
+                <option value="america"></option>
+                <option value="UK"></option>
+            </select>
+        </div>
+        <div>
+            <label for="cities">cities</label>
+            <select name="city" id="city" multiple size="3">
+            <option value="">select a city</option>
+            <option value="Mumbai"></option>
+            <option value="Pune"></option>
+            <option value="Nagpur"></option>
+            <option value="Bangalore"></option>
+            </select>
+        </div>
+
+        <button type="submit">Submit</button>
+
+        <table border="3px solid black">
+            <caption>Marksheet</caption>
+            <thead>
+                <tr>
+                    <th>Student</th>
+                   <th>Maths</th>
+                   <th>PHy</th>
+                   <th>Chem</th>
+                </tr>
+            </thead>
+                    <td>Hitesh</td>
+                    <td>52</td>
+                    <td>22</td>
+                    <td>22</td>
+            
+            <tbody>
+
+            </tbody>
+        </table>
+      
+        <table border="2px"> 
+            <caption>TimeTable</caption>
+            <thead>
+                <tr>
+                    <th>Period <br> days</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thuresday</th>
+                    <th>Friday</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>8 am to 9 am</td>
+                    <td>Math</td>
+                    <td>English</td>
+                    <td rowspan="2"> Science</td>
+                    <td>math</td>
+                    <td>history</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </form>
+  </body>
+</html>
