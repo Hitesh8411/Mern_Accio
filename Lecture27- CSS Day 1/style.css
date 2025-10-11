@@ -1,0 +1,81 @@
+/* universal selector: changes the properties for 
+each element */
+* {
+  /* color is applied using existing color name */
+  color: green;
+  /* we can add a font-family inside font-family property
+   & the preferences if browser failed to load some font  */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* syntax
+selector {
+  property: value
+}
+*/
+
+/* element selector: tag name */
+h1 {
+  /* color is applied using rgb */
+  color: rgb(12, 200, 255);
+}
+#p1 {
+  /* color is applied using rgba, a->alpha, which helps 
+  setting the transparency also */
+  color: rgba(171, 61, 81, 0.6);
+  font-size: 20px;
+  font-weight: bold;
+  text-align: justify; /* left, right, center, justify */
+  text-decoration: underline; /* line-through, underline, overline */
+  line-height: 20px;
+}
+span {
+  font-size: 2rem;
+}
+
+h2 {
+  /* color is applied using hex code, which is #rrggbb */
+  color: #942d2d;
+}
+
+a {
+  /* text-decoration: none is helping to remove the 
+  underline from anchor tag */
+  text-decoration: none;
+  text-transform: capitalize; /* capitalize, uppercase & lowercase */
+}
+
+#myName {
+  background-color: yellow;
+  text-align: justify;
+  padding: 50px 160px 20px 200px;
+  border: 5px dashed black;
+}
+
+button {
+  margin: 20px 10px 20px 10px;
+}
+/* 
+padding: 50px; --> this means all four sides(T, B, L, R) will have 50px of padding
+padding: 50px 150px; --> this means T&B will have 50px of padding and L&R will have 150px of padding
+padding: 50px 100px 80px; --> T=50px, L&R = 100px each, B=80px
+padding: 50px 100px 60px 110px; --> (clockwise dirn) T=50, R=100, B=60, L=110
+
+NOTE: this same applies to margin also
+*/
+
+/* units in CSS 
+px -> fixed pixels
+% -> percentage of parent element
+em -> relative to parent's font size 
+rem -> relative to root's font size
+vh/vw -> relative to viewport's (screen) height/width
+*/
+
+/* display property
+
+- inline: only as wide as text length, can't set height & width
+- block: takes full width, starts on new line
+- inline-block: behaves as inline, but can set height & width
+
+*/

@@ -1,0 +1,38 @@
+*{
+    color:green;
+}
+
+h1{
+    color :rgb(12, 200,255);
+}
+
+p{
+    color:rgba(36, 199, 36,0.25)
+}
+
+h2{
+    color:#942d2d;
+}
+
+#p1{
+    color:rgba(red, green, blue, 0.25);
+    font-size:20px;
+    font-weight: bold;
+    text-align: justify;
+    text-decoration: underline;
+    line-height: 20px;
+
+}
+
+a{
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+/* box mode 
+padding :50px  -> this mean sall four sides
+
+padding : 50px 150px -> this means top and bottom will have 50 and left and right have 150 px
+
+padding 50px 100px 80px -> t-50 left and right 100 , bottom 80px 
+*/

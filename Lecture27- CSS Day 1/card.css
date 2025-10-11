@@ -1,0 +1,43 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#card {
+  border: 1px solid #00fff6;
+  background-color: #e2fffe;
+  width: 500px;
+}
+
+h1 {
+  text-align: center;
+}
+
+img {
+  margin: 0 auto;
+}
+
+h2 {
+  text-decoration: underline;
+}
+
+div {
+  text-align: center;
+}
+
+button {
+  margin: 0 0 20px 0;
+  background-color: rgb(104, 202, 255);
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px 30px;
+}
+
+#position {
+  font-weight: bold;
+}
