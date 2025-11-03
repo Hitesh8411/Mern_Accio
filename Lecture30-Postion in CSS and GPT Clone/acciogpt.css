@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgba(0, 0, 0, 0.724);
+  color: white;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  width: 100vw;
+  height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px;
+  border-right: 1px solid white;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  border-bottom: 1px solid white;
+  padding-bottom: 2px;
+  margin-bottom: 5px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+#settings {
+  position: fixed;
+  text-align: right;
+  bottom: 20px;
+  left: 20px;
+  width: calc(20% - 40px);
+}
+
+.content {
+  display: grid;
+  grid-template-rows: 1fr 10fr 1.5fr;
+  width: 100%;
+}
+
+.title {
+  margin: 10px auto;
+  font-weight: 900;
+  font-size: 2em;
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 20px;
+  /* padding: auto 300px;  find out why this is not applied*/
+}
+
+.suggestion {
+  border: 1px solid white;
+  width: 300px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  /* overflow: auto; */
+}
+
+.suggestion:hover {
+  background-color: rgba(0, 0, 0, 0.225);
+}
+
+.chat {
+  margin: 0 auto;
+  width: 50%;
+  /* width: 700px;  find a way to fix this width*/
+}
+
+.chat .text {
+  width: 70%;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.chat .btn {
+  padding: 10px 20px;
+  background-color: inherit;
+  border: 1px solid white;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
