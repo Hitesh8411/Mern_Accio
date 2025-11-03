@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Interview Levels Summary</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; background: #f9f9f9; }
+  h1, h2 { text-align: center; color: #2c3e50; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 40px; }
+  th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  th { background-color: #2980b9; color: white; }
+  tr:nth-child(even) { background-color: #f2f2f2; }
+  .example { color: #27ae60; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>HTML Interview Levels Summary</h1>
+
+<h2>LEVEL 1 — HTML BASICS (Foundation Stage)</h2>
+<table>
+<thead>
+<tr><th>Topic</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td>HTML Structure</td><td>Understanding &lt;!DOCTYPE html&gt;, &lt;html&gt;, &lt;head&gt;, &lt;body&gt;.</td><td class="example">&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;Hello&lt;/body&gt;&lt;/html&gt;</td></tr>
+<tr><td>Basic Tags</td><td>&lt;h1&gt;-&lt;h6&gt;, &lt;p&gt;, &lt;br&gt;, &lt;hr&gt;, &lt;b&gt;, &lt;i&gt;, &lt;u&gt;</td><td class="example">&lt;h1&gt;Heading&lt;/h1&gt; &lt;p&gt;Paragraph&lt;/p&gt;</td></tr>
+<tr><td>Lists</td><td>Ordered &lt;ol&gt; and unordered &lt;ul&gt; lists with &lt;li&gt; items.</td><td class="example">&lt;ul&gt;&lt;li&gt;Item 1&lt;/li&gt;&lt;/ul&gt;</td></tr>
+<tr><td>Links & Images</td><td>Anchor tags &lt;a&gt; and images &lt;img&gt; with alt text.</td><td class="example">&lt;a href=\"url\"&gt;Link&lt;/a&gt;, &lt;img src=\"img.jpg\" alt=\"Desc\"&gt;</td></tr>
+<tr><td>Comments</td><td>Adding comments for documentation.</td><td class="example">&lt;!-- This is a comment --&gt;</td></tr>
+<tr><td>Block vs Inline</td><td>Understanding display behavior of elements.</td><td class="example">&lt;div&gt;Block&lt;/div&gt;, &lt;span&gt;Inline&lt;/span&gt;</td></tr>
+</tbody>
+</table>
+
+<h2>LEVEL 2 — INTERMEDIATE HTML (Practical Stage)</h2>
+<table>
+<thead>
+<tr><th>Topic</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td>HTML Attributes</td><td>id, class, style, title to control element behavior and styling.</td><td class="example">&lt;div id=\"main\" class=\"container\" style=\"color:red\" title=\"Info\"&gt;Text&lt;/div&gt;</td></tr>
+<tr><td>Tables</td><td>Structure tabular data using &lt;table&gt;, &lt;tr&gt;, &lt;td&gt;, &lt;th&gt;, &lt;thead&gt;, &lt;tbody&gt;.</td><td class="example">&lt;table&gt;&lt;tr&gt;&lt;td&gt;Data&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</td></tr>
+<tr><td>Forms & Input</td><td>Creating forms with &lt;form&gt;, &lt;input&gt;, &lt;textarea&gt;, &lt;select&gt;, &lt;option&gt;, &lt;label&gt;, &lt;button&gt;. Input types like text, email, password, etc.</td><td class="example">&lt;form&gt;&lt;input type=\"text\" required placeholder=\"Name\"&gt;&lt;/form&gt;</td></tr>
+<tr><td>Form Attributes</td><td>method, action, required, placeholder, pattern, readonly to control form behavior.</td><td class="example">&lt;form method=\"post\" action=\"submit.php\"&gt;&lt;/form&gt;</td></tr>
+<tr><td>Media Tags</td><td>Embedding audio and video using &lt;audio&gt; and &lt;video&gt; tags.</td><td class="example">&lt;audio controls src=\"audio.mp3\"&gt;&lt;/audio&gt;</td></tr>
+<tr><td>Linking CSS & JS</td><td>Include external stylesheets and scripts with &lt;link&gt; and &lt;script&gt;.</td><td class="example">&lt;link rel=\"stylesheet\" href=\"style.css\"&gt;&lt;script src=\"app.js\"&gt;&lt;/script&gt;</td></tr>
+</tbody>
+</table>
+
+<h2>LEVEL 3 — ADVANCED HTML5 (Modern Features)</h2>
+<table>
+<thead>
+<tr><th>Topic</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td>Semantic Elements</td><td>Define meaning of content: &lt;header&gt;, &lt;footer&gt;, &lt;article&gt;, &lt;section&gt;, &lt;nav&gt;, &lt;aside&gt;, &lt;main&gt;.</td><td class="example">&lt;header&gt;Header&lt;/header&gt;</td></tr>
+<tr><td>New Form Inputs</td><td>HTML5 input types: email, date, range, color, number, etc.</td><td class="example">&lt;input type=\"email\" placeholder=\"Enter email\"&gt;</td></tr>
+<tr><td>Multimedia</td><td>Embedding audio/video with controls.</td><td class="example">&lt;video controls src=\"video.mp4\"&gt;&lt;/video&gt;</td></tr>
+<tr><td>Graphics</td><td>Draw using &lt;canvas&gt; or vector graphics using &lt;svg&gt;.</td><td class="example">&lt;canvas id=\"myCanvas\"&gt;&lt;/canvas&gt;</td></tr>
+<tr><td>Storage</td><td>localStorage (persistent) vs sessionStorage (tab session).</td><td class="example">localStorage.setItem('key','value');</td></tr>
+<tr><td>Geolocation API</td><td>Get user location via navigator.geolocation.</td><td class="example">navigator.geolocation.getCurrentPosition()</td></tr>
+<tr><td>Drag and Drop API</td><td>Enable drag-and-drop interactions in browser.</td><td class="example">element.draggable = true;</td></tr>
+<tr><td>Responsive Design</td><td>Use &lt;meta name=\"viewport\"&gt; for mobile compatibility.</td><td class="example">&lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;</td></tr>
+<tr><td>Microdata / SEO Tags</td><td>Meta tags for SEO & title, description tags.</td><td class="example">&lt;meta name=\"description\" content=\"Site info\"&gt;</td></tr>
+</tbody>
+</table>
+
+<h2>LEVEL 4 — EXPERT STAGE (Performance & SEO)</h2>
+<table>
+<thead>
+<tr><th>Topic</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td>SEO Tags</td><td>Use &lt;title&gt;, &lt;meta name=\"description\"&gt;, &lt;meta name=\"keywords\"&gt;, proper heading structure.</td><td class="example">&lt;title&gt;Page Title&lt;/title&gt;</td></tr>
+<tr><td>Accessibility</td><td>Use alt attributes, ARIA roles, semantic headings for accessibility.</td><td class="example">&lt;img src=\"img.jpg\" alt=\"Description\"&gt;</td></tr>
+<tr><td>Best Practices</td><td>Semantic tags, minimize inline CSS, optimize images, lazy loading, proper nesting.</td><td class="example">&lt;img src=\"img.jpg\" loading=\"lazy\"&gt;</td></tr>
+<tr><td>Favicon</td><td>Use &lt;link rel=\"icon\" href=\"favicon.ico\"&gt; to set favicon.</td><td class="example">&lt;link rel=\"icon\" href=\"favicon.ico\"&gt;</td></tr>
+<tr><td>Performance Tips</td><td>Use CDN, compress media, defer/async scripts, avoid large inline scripts.</td><td class="example">&lt;script src=\"app.js\" defer&gt;&lt;/script&gt;</td></tr>
+</tbody>
+</table>
+
+</body>
+</html>
