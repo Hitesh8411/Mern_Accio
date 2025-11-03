@@ -1,0 +1,83 @@
+:root {
+  --btn-color: blue;
+  --bg-color: #fff9c4;
+  --default-color: #2e7d32;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-color);
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 15px;
+  background-color: var(--btn-color);
+}
+
+.navbar a {
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: yellow;
+}
+
+/* Page Heading */
+h1 {
+  text-align: center;
+  margin: 30px 0;
+  color: var(--default-color);
+}
+
+/* Gallery Layout */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Individual Card */
+.card {
+  flex: 0 0 250px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  padding-bottom: 15px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card h2 {
+  margin-top: 10px;
+  color: var(--default-color);
+}
+
+.card p {
+  color: #555;
+  margin: 5px 10px;
+}
