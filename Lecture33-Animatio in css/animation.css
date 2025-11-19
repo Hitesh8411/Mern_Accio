@@ -1,0 +1,101 @@
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+.container {
+    height: 100px;
+    width: 100px;
+  
+}
+
+.ball1 {
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    margin: 15px;
+    background-color: red;
+    border-radius: 50%;
+    position: relative;
+    animation-name: bounce ; 
+    /* userdefine */
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+.ball2 {
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    margin: 15px;
+    background-color: red;
+    border-radius: 50%;
+    position: relative;
+    animation-name: bounce ; 
+    /* userdefine */
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+.ball3 {
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    margin: 15px;
+    background-color: red;
+    border-radius: 50%;
+    position: relative;
+    animation-name: bounce ; 
+    /* userdefine */
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.ball4 {
+     width: 80px;
+    height: 80px;
+    display: inline-block;
+    margin: 15px;
+    background-color: red;
+    border-radius: 50%;
+    position: relative;
+    animation-name: bounce ; 
+    /* userdefine */
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.ball5 {
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    margin: 15px;
+    background-color: red;
+    border-radius: 50%;
+    position: relative;
+    animation-name: bounce ; 
+    /* userdefine */
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+
+
+@keyframes bounce {
+        from {transform: translateY(0);
+        
+        }
+
+        to {transform: translateY(-100px);}
+}

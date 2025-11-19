@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f5f5f5;
+    transition: background-color 1s;
+}
+
+.container {
+    padding: 100px;
+}
+
+.container .box {
+    width: 400px;
+    height: 100px;
+    margin-bottom: 30px;
+    background-color: aquamarine;
+    transition: all 2s;
+}
+
+/* Different timing functions */
+.linear {
+    transition-timing-function: linear;
+}
+
+.ease-in {
+    transition-timing-function: ease-in;
+}
+
+.ease-out {
+    transition-timing-function: ease-out;
+}
+
+.ease-in-out {
+    transition-timing-function: ease-in-out;
+}
+
+.step-end {
+    transition-timing-function: step-end;
+}
+
+.step-start {
+    transition-timing-function: step-start;
+}
+
+.steps {
+    transition-timing-function: steps(5, end);
+}
+
+/* 🔥 When hovering on the BODY — apply animation to all boxes */
+body:hover .box {
+    width: 600px;
+    background-color: blanchedalmond;
+}
