@@ -1,0 +1,18 @@
+<div id="parent" style="padding:20px; background:lightblue;">
+  Parent Div
+  <button id="child">Click Me</button>
+</div>
+
+<script>
+document.getElementById("child").addEventListener("click", function() {
+  alert("Child button clicked");
+});
+
+document.getElementById("parent").addEventListener("click", function() {
+  alert("Parent div clicked");
+});
+
+document.body.addEventListener("click", function() {
+  alert("Body clicked");
+});
+</script>

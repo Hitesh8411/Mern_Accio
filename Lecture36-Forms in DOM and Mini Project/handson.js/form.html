@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Events Demo</title>
+</head>
+<body>
+
+  <h2> Form Events Example</h2>
+
+  <form id="myForm">
+    <label>Username: </label>
+    <input type="text" id="username" placeholder="Enter name"><br><br>
+
+    <label>Choose a color: </label>
+    <select id="color">
+      <option value="">--Select--</option>
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+    </select><br><br>
+
+    <label>
+      <input type="checkbox" id="agree"> I agree
+    </label><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="log"></p>
+
+  <script>
+    let log = document.getElementById("log");
+    let username = document.getElementById("username");
+    let color = document.getElementById("color");
+    let agree = document.getElementById("agree");
+    let form = document.getElementById("myForm");
+
+    // 1input event (live typing)
+    username.addEventListener("input", function() {
+      log.innerText = "Typing: " + username.value;
+    });
+
+    // change event (after leaving field or selecting option)
+    color.addEventListener("change", function() {
+      log.innerText = "You selected color: " + color.value;
+    });
+
+    agree.addEventListener("change", function() {
+      log.innerText = agree.checked ? " You agreed" : "You unchecked";
+    });
+
+    // focus and blur events
+    username.addEventListener("focus", function() {
+      log.innerText = "Input field focused";
+    });
+    username.addEventListener("blur", function() {
+      log.innerText = "Input field lost focus";
+    });
+
+    // sumit event
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); // stop page reload
+      log.innerText = " Form submitted with Username: " + username.value +
+                      ", Color: " + color.value +
+                      ", Agreed: " + (agree.checked ? "Yes" : "No");
+    });
+  </script>
+
+</body>
+</html>

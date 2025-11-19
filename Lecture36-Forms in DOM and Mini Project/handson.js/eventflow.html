@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Flow Demo</title>
+  <style>
+    div {
+      padding: 20px;
+      margin: 10px;
+      border: 2px solid black;
+      text-align: center;
+      cursor: pointer;
+    }
+    #outer { background-color: lightblue; }
+    #inner { background-color: lightgreen; }
+    #target { background-color: lightcoral; }
+  </style>
+</head>
+<body>
+
+  <div id="outer">
+    Outer Div
+    <div id="inner">
+      Inner Div
+      <div id="target">Target Div (Click Me)</div>
+    </div>
+  </div>
+
+  <script>
+    // Helper function for logging
+    function log(msg) {
+      console.log(msg);
+    }
+
+    const outer = document.getElementById("outer");
+    const inner = document.getElementById("inner");
+    const target = document.getElementById("target");
+
+    //  CAPTURING PHASE (useCapture = true)
+    outer.addEventListener("click", (event) => {
+      log("Outer Capturing Phase");
+    }, true);
+
+    inner.addEventListener("click", (event) => {
+      log("Inner Capturing Phase");
+    }, true);
+
+    // BUBBLING PHASE (default)
+    outer.addEventListener("click", (event) => {
+      log("Outer Bubbling Phase");
+    });
+
+    inner.addEventListener("click", (event) => {
+      log("Inner Bubbling Phase");
+    });
+
+    // TARGET ELEMENT
+    target.addEventListener("click", (event) => {
+      log("Target Clicked!");
+      log("event.target:", event.target.id);
+      log("event.currentTarget:", event.currentTarget.id);
+      // Uncomment below to stop event from bubbling up
+      // event.stopPropagation();
+    });
+  </script>
+</body>
+</html>
