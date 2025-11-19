@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Manipulation</title>
+</head>
+<body>
+    <div class="first-div">I'm First div</div>
+    <div id="second-div">
+        <div class="first-class">
+            I'm child of First Div
+        </div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam natus architecto earum dolor provident, erro expedita sint obcaecati itaque aspernatur eaque asperiores vel magnam eveniet. Beatae minima voluptates .</p>
+
+        <p id="inhtml">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora quibusdam deserunt numquam placeat nulla voluptas</p>
+
+        <img src="image.png" alt="">
+    </div>
+    <script>
+        console.log(window.document.body)
+        console.log(document.body)
+        console.log(document.all) 
+        console.log(document.childNodes)     ///nodelist include all (tags , text etc)
+        console.log(document.body.children)      // htmcollections
+        console.log(document.body.firstChild)     // text
+        console.log(document.body.firstElementChild) //actual firts element
+
+
+       console.log(document.querySelector("div"))
+        console.log(document.querySelectorAll("div"))
+        console.log(document.querySelector(".first-div"))
+        console.log(document.querySelector("#secod-div"))
+        console.log(document.querySelector("div"))
+
+        // selctors 
+
+        console.log(document.getElementById("second-div"))
+        console.log(document.getElementsByClassName("first-div"))
+        console.log(document.getElementsByTagName("div"))
+
+        const para = document.querySelector("p")
+        console.log(para);
+
+        para.style.color="green"
+        // para.style.backgroundColor="yellow"
+
+        const imageElement =document.querySelector("img");
+        imageElement.setAttribute("src","bg-image.jpg")
+
+        const dataElement =document.querySelector("div.first-div")
+        dataElement.setAttribute("data-p", "Hello there")
+
+        
+        
+        console.log(para.innerHTML)
+        console.log(para.textContent)
+
+        // Changing content
+       
+        para.textContent="hello this is change by textcontent"
+        para.innerHTML="<i>hello this is change by textcontent</i>"
+
+        
+
+    </script>
+    
+</body>
+</html>

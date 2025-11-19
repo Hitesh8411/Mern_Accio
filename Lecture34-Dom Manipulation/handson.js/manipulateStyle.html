@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Manipulating Styles</title>
+</head>
+<body>
+  <h1 id="heading">Hello, DOM Styling!</h1>
+  <button onclick="changeStyle()">Change Style</button>
+
+  <script>
+    function changeStyle() {
+      let heading = document.getElementById("heading");
+
+      // Change text color
+      heading.style.color = "blue";
+
+      // Change background color
+      heading.style.backgroundColor = "yellow";
+
+      // Change font size
+      heading.style.fontSize = "40px";
+
+      // Add border
+      heading.style.border = "2px solid red";
+
+      // Add padding
+      heading.style.padding = "10px";
+    }
+  </script>
+</body>
+</html>
