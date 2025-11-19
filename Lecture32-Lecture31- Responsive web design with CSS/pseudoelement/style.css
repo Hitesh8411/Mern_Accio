@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div > div {
+    height: 300px;
+    width: 300px;
+    background-color: blueviolet;
+    margin: 100px auto;
+}
+div div:first-child {
+    background-color: red;
+}
+
+
+.child:active {
+    background-color: white;
+}
+
+
+
+.child:hover{
+    border: 5px solid black;
+}
+
+.elements p::before {
+    content: "Hitesh";
+}
+
+.elements p::first-line{
+    content: "";
+    color: green;
+}

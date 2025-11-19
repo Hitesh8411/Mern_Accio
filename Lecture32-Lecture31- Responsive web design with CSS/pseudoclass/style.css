@@ -1,0 +1,89 @@
+/* *{
+    margin : 0;
+    padding: 0;
+    box-sizing:border-box;
+
+}
+
+div{
+    text-align: center;
+}
+
+div > div {
+    display: inline-block;
+    width: 300px;
+    height: 400px;
+    background-color: yellow;
+}
+
+.linear div:nth-of-type(1) {
+    background : linear-gradient(green,orange);
+}
+
+
+.linear div:nth-of-type(2) {
+    background : linear-gradient(to right, white,blue);
+}
+
+
+
+.linear div:last-of-type {
+    background : linear-gradient(120deg,red,blue);
+}
+
+ */
+
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div{
+    text-align: center;
+}
+
+div > div {
+    display: inline-block;
+    width: 400px;
+    height: 400px;
+    background-color: rgb(221, 221, 33);
+}
+
+.linear div:nth-of-type(1){
+    background: linear-gradient(rgba(219, 151, 83, 0.932) 80%,rgba(3, 233, 95, 0.795));
+}
+
+.linear div:nth-of-type(2){
+    background: linear-gradient(to right,rgb(255, 153, 0),rgb(218, 219, 219),rgb(10, 211, 10));
+}
+
+.linear div:last-of-type{
+    background: linear-gradient(100deg,rgba(255, 77, 0, 0.767),rgb(162, 162, 162),rgba(10, 241, 37, 0.784));
+}
+
+.radial div:nth-of-type(1){
+    background: radial-gradient(rgba(219, 151, 83, 0.932) 80%,rgba(3, 233, 95, 0.795));
+}
+
+.radial div:nth-of-type(2){
+    background: radial-gradient(farthest-side,rgb(255, 153, 0),rgb(218, 219, 219),rgb(10, 211, 10));
+}
+
+.radial div:nth-of-type(3){
+    background: radial-gradient(closest-side,rgba(255, 77, 0, 0.767),rgb(162, 162, 162),rgba(10, 241, 37, 0.784));
+}
+
+.conic div:nth-of-type(1){
+    background: conic-gradient(rgba(255, 77, 0, 0.767),rgb(162, 162, 162),rgba(10, 241, 37, 0.784));
+}
+
+.conic div:nth-of-type(2){
+    background: conic-gradient(rgba(255, 77, 0, 0.767),rgb(162, 162, 162),rgba(10, 241, 37, 0.784));
+}
+
+.conic div:nth-of-type(3){
+    background: conic-gradient(rgba(255, 77, 0, 0.767),rgb(162, 162, 162),rgba(10, 241, 37, 0.784));
+}
+
+/* state: active . hover, click etc */
