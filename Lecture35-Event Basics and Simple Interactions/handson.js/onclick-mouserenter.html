@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>onclick & onmouseenter Example</title>
+  <style>
+    #box {
+      width: 120px;
+      height: 120px;
+      background: lightblue;
+      margin-top: 10px;
+      text-align: center;
+      line-height: 120px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2> DOM Events Demo</h2>
+
+  <!-- onclick example -->
+  <button id="myBtn">Click Me</button>
+  <p id="msg"></p>
+
+  <!-- onmouseenter example -->
+  <div id="box">Hover here</div>
+
+  <script>
+    // onclick
+    document.getElementById("myBtn").onclick = function() {
+      document.getElementById("msg").innerText = "Button was clicked!";
+    };
+
+    // onmouseenter
+    document.getElementById("box").onmouseenter = function() {
+      this.style.background = "orange";
+      this.innerText = "Mouse Entered!";
+    };
+  </script>
+
+</body>
+</html>

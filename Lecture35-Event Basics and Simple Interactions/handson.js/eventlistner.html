@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Listener Example</title>
+  <style>
+    #box {
+      width: 150px;
+      height: 150px;
+      background: lightblue;
+      text-align: center;
+      line-height: 150px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2> Event Listener Demo</h2>
+
+  <!-- Click Event Example -->
+  <button id="myBtn">Click Me</button>
+  <p id="msg"></p>
+
+  <!-- Mouse Enter Example -->
+  <div id="box">Hover here</div>
+
+  <script>
+    // 1️⃣ Click event listener
+    let btn = document.getElementById("myBtn");
+    btn.addEventListener("click", function() {
+      document.getElementById("msg").innerText = "Button was clicked!";
+    });
+
+    // 2️⃣ Mouse enter event listener
+    let box = document.getElementById("box");
+    box.addEventListener("mouseenter", function() {
+      box.style.background = "orange";
+      box.innerText = "Mouse Entered!";
+    });
+  </script>
+
+</body>
+</html>
+
+
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Listeners for Elements</title>
+</head>
+<body>
+
+  <h2>Multiple Buttons with Event Listeners</h2>
+
+  <button class="myBtn">Button 1</button>
+  <button class="myBtn">Button 2</button>
+  <button class="myBtn">Button 3</button>
+
+  <p id="msg"></p>
+
+  <script>
+    // Select all buttons with class 'myBtn'
+    let buttons = document.querySelectorAll(".myBtn");
+
+    // Loop through each button and add click listener
+    buttons.forEach(function(btn, index) {
+      btn.addEventListener("click", function() {
+        document.getElementById("msg").innerText = " You clicked Button " + (index + 1);
+      });
+    });
+  </script>
+
+</body>
+</html>
+ -->

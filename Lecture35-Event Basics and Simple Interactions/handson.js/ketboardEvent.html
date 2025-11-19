@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Keyboard Events Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    #log {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 15px;
+      min-height: 60px;
+      background: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Keyboard Events Demo</h2>
+  <input type="text" id="box" placeholder="Type something...">
+  
+  <div id="log">
+    <p><strong>Key Down:</strong> <span id="downMsg">-</span></p>
+    <p><strong>Key Up:</strong> <span id="upMsg">-</span></p>
+    <p><strong>Shortcut:</strong> <span id="shortcutMsg">-</span></p>
+  </div>
+
+  <script>
+    let box = document.getElementById("box");
+
+    // keydown (fires when key is pressed)
+    box.addEventListener("keydown", function(event) {
+      document.getElementById("downMsg").innerText = 
+        "Pressed " + event.key + " (code: " + event.code + ")";
+    });
+
+    //  keyup (fires when key is released)
+    box.addEventListener("keyup", function(event) {
+      document.getElementById("upMsg").innerText = 
+        "Released " + event.key + " (code: " + event.code + ")";
+    });
+
+    //  global shortcut detection (Ctrl + S)
+    document.addEventListener("keydown", function(event) {
+      if (event.ctrlKey && event.key === "s") {
+        event.preventDefault(); // stop default browser save
+        document.getElementById("shortcutMsg").innerText = " Ctrl + S detected!";
+      }
+    });
+  </script>
+
+</body>
+</html>

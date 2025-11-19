@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Events Demo</title>
+  <style>
+    #box {
+      width: 120px;
+      height: 120px;
+      background: lightblue;
+      margin-top: 10px;
+    }
+    #msg, #output {
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h2> DOM Events Example</h2>
+
+  <!-- Button Click -->
+  <button id="myBtn">Click Me</button>
+  <p id="msg"></p>
+
+  <!-- Mouse Events -->
+  <div id="box">Hover over me</div>
+
+  <!-- Keyboard Events -->
+  <input type="text" id="name" placeholder="Type something...">
+  <p id="output"></p>
+
+  <script>
+    // Click Event
+    document.getElementById("myBtn").addEventListener("click", function() {
+      document.getElementById("msg").innerText = "Button was clicked!";
+    });
+
+    //  Mouse Events
+    let box = document.getElementById("box");
+    box.addEventListener("mouseover", function() {
+      box.style.background = "orange";
+      box.innerText = "Mouse Over!";
+    });
+    box.addEventListener("mouseout", function() {
+      box.style.background = "lightblue";
+      box.innerText = "Hover over me";
+    });
+
+    // Keyboard Events
+    document.getElementById("name").addEventListener("keydown", function(event) {
+      document.getElementById("output").innerText = " You pressed: " + event.key;
+    });
+  </script>
+
+</body>
+</html>

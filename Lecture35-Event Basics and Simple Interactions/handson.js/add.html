@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Adding Elements Example</title>
+</head>
+<body>
+  <h2>My Todo List</h2>
+  <ul id="todoList">
+    <li>Learn HTML</li>
+    <li>Learn CSS</li>
+  </ul>
+
+  <button onclick="addItem()">Add New Item</button>
+
+  <script>
+    function addItem() {
+      // 1. Create new <li> element
+      let newItem = document.createElement("li");
+
+      // 2. Add text inside it
+      newItem.textContent = "Learn JavaScript";
+
+      // 3. Append to the <ul>
+      let list = document.getElementById("todoList");
+      list.appendChild(newItem);
+    }
+  </script>
+</body>
+</html>
+

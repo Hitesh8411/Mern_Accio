@@ -1,0 +1,44 @@
+/* <!DOCTYPE html>
+<html>
+<head>
+  <title>Event Listener Example</title>
+  <style>
+    #box {
+      width: 150px;
+      height: 150px;
+      background: lightblue;
+      text-align: center;
+      line-height: 150px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎯 Event Listener Demo</h2>
+
+  <!-- Click Event Example -->
+  <button id="myBtn">Click Me</button>
+  <p id="msg"></p>
+
+  <!-- Mouse Enter Example -->
+  <div id="box">Hover here</div>
+
+  <script>
+    // 1️⃣ Click event listener
+    let btn = document.getElementById("myBtn");
+    btn.addEventListener("click", function() {
+      document.getElementById("msg").innerText = "✅ Button was clicked!";
+    });
+
+    // 2️⃣ Mouse enter event listener
+    let box = document.getElementById("box");
+    box.addEventListener("mouseenter", function() {
+      box.style.background = "orange";
+      box.innerText = "Mouse Entered!";
+    });
+  </script>
+
+</body>
+</html> */
