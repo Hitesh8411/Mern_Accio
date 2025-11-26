@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delicious Recipe Blog</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Global */
+      :root {
+        --primary: #ff7043;
+        --dark: #222;
+        --light: #fff;
+        --bg: #fafafa;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Arial";
+        background: var(--bg);
+        color: var(--dark);
+      }
+
+      /* Navbar */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        background: var(--primary);
+        color: white;
+      }
+
+      .navbar ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+
+      .navbar a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .navbar a:hover {
+        text-decoration: underline;
+      }
+
+      /* Hero */
+      .hero {
+        background: linear-gradient(to right, #ff8a65, #ff7043);
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+      }
+
+      /* Container */
+      .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 30px 20px;
+      }
+
+      /* Recipe Card */
+      .recipe-card {
+        display: flex;
+        background: var(--light);
+        padding: 20px;
+        gap: 20px;
+        border-radius: 10px;
+      }
+
+      .recipe-card img {
+        width: 45%;
+        border-radius: 10px;
+      }
+
+      /* Table */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--light);
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 10px;
+      }
+
+      /* Gallery Grid */
+      .grid-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+      }
+
+      .grid-gallery img {
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      /* Form */
+      .subscribe-form input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .subscribe-form button {
+        background: var(--primary);
+        color: white;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 5px;
+      }
+      .subscribe-form button:hover {
+        opacity: 0.9;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--dark);
+        padding: 15px;
+        text-align: center;
+        color: white;
+        margin-top: 30px;
+      }
+
+      /* Responsive */
+      @media (max-width: 700px) {
+        .recipe-card {
+          flex-direction: column;
+        }
+
+        .navbar ul {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header / Hero -->
+    <header class="hero">
+      <nav class="navbar">
+        <h1>My Recipe Blog</h1>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#recipes">Recipes</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Subscribe</a></li>
+        </ul>
+      </nav>
+
+      <div class="hero-text">
+        <h2>Cook. Eat. Repeat.</h2>
+        <p>Easy & tasty recipes for everyday food lovers 🍽️</p>
+      </div>
+    </header>
+
+    <!-- Recipe Section -->
+    <section id="recipes" class="container">
+      <h2>Recipe of the Day: Paneer Butter Masala</h2>
+
+      <article class="recipe-card">
+        <img src="https://picsum.photos/400/250" alt="Paneer Dish" />
+
+        <div>
+          <h3>Ingredients</h3>
+          <ul>
+            <li>200g Paneer</li>
+            <li>2 Tomatoes</li>
+            <li>1 Onion</li>
+            <li>Butter, Spices, Cream</li>
+          </ul>
+
+          <h3>Steps</h3>
+          <ol>
+            <li>Saute onion & tomatoes</li>
+            <li>Add spices & blend</li>
+            <li>Add paneer & cream</li>
+            <li>Serve hot 🔥</li>
+          </ol>
+        </div>
+      </article>
+    </section>
+
+    <!-- Nutrition Table -->
+    <section class="container">
+      <h2>Nutrition Info</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Nutrient</th>
+            <th>Amount</th>
+            <th>Daily %</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Calories</td>
+            <td>320</td>
+            <td>15%</td>
+          </tr>
+          <tr>
+            <td colspan="2">Protein</td>
+            <td>18%</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="container">
+      <h2>Food Gallery</h2>
+      <div class="grid-gallery">
+        <img src="https://picsum.photos/200?1" />
+        <img src="https://picsum.photos/200?2" />
+        <img src="https://picsum.photos/200?3" />
+        <img src="https://picsum.photos/200?4" />
+      </div>
+    </section>
+
+    <!-- Subscribe Form -->
+    <section id="contact" class="container">
+      <h2>Subscribe for Daily Recipes</h2>
+
+      <form class="subscribe-form">
+        <label>Name</label>
+        <input type="text" placeholder="Enter your name" required />
+
+        <label>Email</label>
+        <input type="email" placeholder="Enter your email" required />
+
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 My Recipe Blog | Cook with ❤️</p>
+    </footer>
+  </body>
+</html>
