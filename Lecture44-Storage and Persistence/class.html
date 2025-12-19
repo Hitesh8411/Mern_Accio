@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecture 44 - Storage & Persistence</title>
+  </head>
+  <body>
+    <script>
+      const key = "name";
+      const value = "vaibhav";
+      const value2 = "pratik";
+
+      localStorage.setItem(key, value);
+      localStorage.setItem(key, value2); //will update the key with latest value
+
+      localStorage.setItem("key1", "value1");
+      localStorage.setItem("key2", "value2");
+      localStorage.setItem("key3", "value3");
+      localStorage.setItem("key4", "value4");
+
+      localStorage.removeItem("key");
+
+      /* 
+      const str = "a".repeat(1000 * 25 * 1000); //QuotaExceededError
+      localStorage.setItem("bigData", str);
+      */
+      console.log(localStorage.getItem("bigData"));
+
+      console.log(localStorage.length);
+
+      console.log(localStorage.key(2));
+
+      //print all the key values from localstorage
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const value = localStorage.getItem(key);
+        console.log(key, value);
+      }
+
+      localStorage.clear();
+    </script>
+  </body>
+</html>
