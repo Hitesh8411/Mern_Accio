@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="child">Child</div>
+    </div>
+    <script>
+      const parent = document.querySelector(".parent");
+      const child = document.querySelector(".child");
+
+      parent.addEventListener(
+        "click",
+        function (event) {
+          console.log(this);
+
+          //   event.stopPropagation();
+          console.log("target", event.target.matches(".child")); //element which has triggered the event, will be the deepest child of this parent
+          console.log("currentTarget", event.currentTarget); //element that has captured the event i.e., element on which this listener is attatched
+
+          console.log("Parent is clicked");
+        },
+        { capture: true }
+      );
+      /* 
+      child.addEventListener(
+        "click",
+        (event) => {
+          //   event.stopPropagation();
+          event.stopImmediatePropagation();
+          console.log("Child is clicked");
+        },
+        { capture: true }
+      );
+
+      child.addEventListener(
+        "click",
+        (event) => {
+          //   event.stopPropagation();
+          console.log("Child is clicked twice");
+        },
+        { capture: true }
+      ); */
+
+      function greetMe(greeting) {
+        console.log(greeting + " " + this.name);
+      }
+
+      const person = {
+        name: "Vaibhav",
+      };
+
+      greetMe.call(person, "Hello");
+      //greetMe.call(newThis, arg1, arg2, ...)
+
+      greetMe.apply(person, ["Hey"]);
+      //greetMe.call(newThis, [arg1, arg2, ...])
+
+      const greetPerson = greetMe.bind(person, "Bye"); //returns a new function with this referring to person, so that we don't need to give person as a new this, everytime.
+
+      greetPerson();
+    </script>
+  </body>
+</html>
