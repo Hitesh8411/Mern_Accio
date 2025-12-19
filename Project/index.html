@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Social Media Feed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <h2>Social Feed</h2>
+      <div id="user-info">
+        <span id="user-avatar">U</span>
+        <span id="username">Username</span>
+      </div>
+    </header>
+
+    <!-- Post Creation -->
+    <section class="create-post">
+      <h3>Create Post</h3>
+
+      <textarea
+        id="post-text"
+        placeholder="What's on your mind?"
+        maxlength="280"
+      ></textarea>
+
+      <div class="post-actions">
+        <input type="file" id="post-image" accept="image/*" />
+        <span id="char-count">0 / 280</span>
+      </div>
+
+      <!-- Image Preview -->
+      <img id="image-preview" />
+
+      <button id="post-btn">Post</button>
+    </section>
+
+    <!-- Filters -->
+    <section class="filters">
+      <button id="all-posts">All Posts</button>
+      <button id="my-posts">My Posts</button>
+    </section>
+
+    <!-- Feed -->
+    <main id="feed">
+      <!-- Posts will be added dynamically -->
+    </main>
+
+    <!-- Load More -->
+    <button id="load-more">Load More</button>
+
+    <!-- Scroll to Top -->
+    <button id="scroll-top">⬆ Top</button>
+
+    <!-- JS Files -->
+    <script src="js/post.js"></script>
+    <script src="js/comment.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

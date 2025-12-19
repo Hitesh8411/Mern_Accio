@@ -1,0 +1,23 @@
+body {
+  font-family: Arial;
+  padding: 20px;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+
+label {
+  margin-top: 10px;
+}
+
+body.light {
+  background: white;
+  color: black;
+}
+body.dark {
+  background: black;
+  color: white;
+}

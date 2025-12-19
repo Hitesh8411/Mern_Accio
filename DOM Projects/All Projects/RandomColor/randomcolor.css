@@ -1,0 +1,18 @@
+h3 {
+  text-align: center;
+}
+
+.btnchnge {
+  display: block;
+  margin: 20px auto;
+}
+
+.style {
+  height: 300px;
+  width: 300px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+}   

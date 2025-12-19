@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Simple Study Group Scheduler</title>
+    <style>
+      /* Very basic layout, no fancy CSS */
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .form-container {
+        flex: 1;
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+
+      .sidebar {
+        width: 250px;
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+
+      .user-item {
+        border-bottom: 1px solid #eee;
+        padding: 5px 0;
+        font-size: 14px;
+      }
+
+      label {
+        display: block;
+        margin-top: 8px;
+      }
+
+      input,
+      button {
+        margin-top: 4px;
+      }
+
+      button {
+        margin-top: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Left side: registration form -->
+    <div class="form-container">
+      <h2>Register User</h2>
+
+      <form id="userForm">
+        <label>
+          Name:
+          <input type="text" id="nameInput" required />
+        </label>
+
+        <label>
+          Email:
+          <input type="email" id="emailInput" required />
+        </label>
+
+        <label>
+          Subjects (comma separated):
+          <input type="text" id="subjectsInput" placeholder="Math, Physics" />
+        </label>
+
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+
+    <!-- Right side: sidebar showing users -->
+    <div class="sidebar">
+      <h3>Current Users</h3>
+      <div id="usersList"></div>
+    </div>
+
+    <script>
+      // 1️⃣ Constructor Function (not class)
+      function User(name, email, subjects) {
+        this.name = name;
+        this.email = email;
+        this.subjects = subjects; // array
+      }
+
+      // 2️⃣ Array to store all users in memory
+      const users = [];
+
+      // 3️⃣ Get DOM elements
+      const userForm = document.getElementById("userForm");
+      const nameInput = document.getElementById("nameInput");
+      const emailInput = document.getElementById("emailInput");
+      const subjectsInput = document.getElementById("subjectsInput");
+      const usersList = document.getElementById("usersList");
+
+      // 4️⃣ Handle form submit
+      userForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // stop page refresh
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const subjectsText = subjectsInput.value.trim();
+
+        // simple validation
+        if (!name || !email) {
+          alert("Please enter name and email");
+          return;
+        }
+
+        // convert "Math, Physics" -> ["Math", "Physics"]
+        const subjects = subjectsText
+          ? subjectsText.split(",").map((s) => s.trim())
+          : [];
+
+        // 5️⃣ Create a new User instance using constructor
+        const newUser = new User(name, email, subjects);
+
+        // 6️⃣ Add to users array (state in JS)
+        users.push(newUser);
+
+        // 7️⃣ Update UI (sidebar)
+        addUserToSidebar(newUser);
+
+        // 8️⃣ Clear form
+        userForm.reset();
+      });
+
+      // 9️⃣ Function to add a user to the sidebar using appendChild
+      function addUserToSidebar(user) {
+        const userDiv = document.createElement("div");
+        userDiv.className = "user-item";
+
+        // show name, email, subjects
+        userDiv.textContent =
+          user.name +
+          " (" +
+          user.email +
+          ")" +
+          (user.subjects.length
+            ? " | Subjects: " + user.subjects.join(", ")
+            : "");
+
+        usersList.appendChild(userDiv);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+
+.game-container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px 50px;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn {
+  height: 150px;
+  width: 150px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.red {
+  background: linear-gradient(145deg, #ff4b5c, #b31217);
+}
+
+.yellow {
+  background: linear-gradient(145deg, #ffd93d, #f4c430);
+}
+
+.green {
+  background: linear-gradient(145deg, #42e695, #3bb78f);
+}
+
+.purple {
+  background: linear-gradient(145deg, #9d50bb, #6e48aa);
+}
+
+.flash {
+  background: white !important;
+  box-shadow: 0 0 40px white;
+}

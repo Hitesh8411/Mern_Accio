@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="formevents.css">
+</head>
+
+<body>
+
+    <h2>Complete Form With All Input Types</h2>
+
+    <form id="myForm">
+
+        <!-- TEXT -->
+        <label>Full Name:</label>
+        <input type="text" id="fullname"><br><br>
+
+        <!-- EMAIL -->
+        <label>Email:</label>
+        <input type="email" id="email"><br><br>
+
+        <!-- PASSWORD -->
+        <label>Password:</label>
+        <input type="password" id="password"><br><br>
+
+        <!-- NUMBER -->
+        <label>Age:</label>
+        <input type="number" id="age"><br><br>
+
+        <!-- TEL -->
+        <label>Phone:</label>
+        <input type="tel" id="phone"><br><br>
+
+        <!-- DATE -->
+        <label>Date of Birth:</label>
+        <input type="date" id="dob"><br><br>
+
+        <!-- TIME -->
+        <label>Time:</label>
+        <input type="time" id="time"><br><br>
+
+
+
+        
+        <!-- FILE -->
+        <label>Upload File:</label>
+        <input type="file" id="fileInput"><br><br>
+
+        <!-- RADIO -->
+        <label>Gender:</label><br>
+        <input type="radio" name="gender" value="Male"> Male <br>
+        <input type="radio" name="gender" value="Female"> Female <br><br>
+
+        <!-- CHECKBOX -->
+        <label>Hobbies:</label><br>
+        <input type="checkbox" class="hobby" value="Cricket"> Cricket <br>
+        <input type="checkbox" class="hobby" value="Reading"> Reading <br>
+        <input type="checkbox" class="hobby" value="Music"> Music <br><br>
+
+        <!-- SELECT DROPDOWN -->
+        <label>Country:</label>
+        <select id="country">
+            <option value="">Select</option>
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+            <option value="Australia">Australia</option>
+        </select><br><br>
+
+        <!-- TEXTAREA -->
+        <label>Address:</label><br>
+        <textarea id="address" rows="4" cols="30"></textarea><br><br>
+
+        <!-- RANGE -->
+        <label>Rating:</label>
+        <input type="range" id="rating" min="1" max="10"><br><br>
+
+        <!-- COLOR -->
+        <label>Favorite Color:</label>
+        <input type="color" id="favcolor"><br><br>
+
+        <!-- HIDDEN -->
+        <input type="hidden" id="userid" value="12345">
+
+        <!-- SUBMIT BUTTON -->
+        <button type="button" id="submitBtn">Submit</button>
+
+    </form>
+    <script src="formevents.js"></script>
+</body>
+
+</html>

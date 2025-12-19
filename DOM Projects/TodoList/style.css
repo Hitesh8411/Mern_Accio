@@ -1,0 +1,123 @@
+/* Basic page styling */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+/* Container */
+.container {
+  background: white;
+  padding: 25px;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Input area */
+.input-box {
+  display: flex;
+  gap: 10px;
+}
+
+#todo {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+}
+
+.add-btn {
+  background: #3498db;
+  padding: 10px 15px;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s ease;
+}
+
+.add-btn:hover {
+  background: #1d6fa5;
+}
+
+/* Todo item */
+.todo-item {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px; /* keeps spacing consistent */
+}
+
+.todo-item p {
+  margin: 0;
+  font-size: 16px;
+  flex: 1; /* lets text take available space */
+}
+
+/* Buttons area */
+.todo-buttons {
+  display: flex;
+  gap: 6px; /* space between edit & delete */
+}
+
+.todo-buttons button {
+  padding: 7px 12px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-size: 14px;
+}
+
+/* Edit (default mode) */
+.edit-btn {
+  background-color: #f1c40f; /* yellow */
+}
+
+.edit-btn:hover {
+  background-color: #d4a90b;
+}
+
+/* Save mode (when class 'save-mode' added in JS) */
+.edit-btn.save-mode {
+  background-color: #2ecc71 !important; /* green */
+}
+
+.edit-btn.save-mode:hover {
+  background-color: #27ae60 !important;
+}
+
+/* Delete button */
+.delete-btn {
+  background-color: #e74c3c; /* red */
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Input shown during editing */
+.todo-item input {
+  padding: 8px;
+  flex: 1;
+  max-width: 65%; /* prevents pushing buttons to new line */
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  font-size: 15px;
+}

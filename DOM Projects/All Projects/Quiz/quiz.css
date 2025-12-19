@@ -1,0 +1,80 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  margin: 100px 0 50px 0;
+}
+
+.question-title {
+  margin: 0 10%;
+  text-align: center;
+  font-size: 1.5rem;
+  background: #1a73e8;
+  color: white;
+  border-radius: 10px;
+  padding: 20px 10%;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.options button {
+  width: 40%;
+  font-size: 1.4rem;
+  border-radius: 10px;
+  padding: 18px;
+  margin: 12px 0;
+  background: white;
+  border: 3px solid #777;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+/* When user selects any option */
+.selected {
+  background: yellow;
+  border-color: orange;
+}
+
+/* Correct answer */
+.correct {
+  background: #4caf50 !important; /* GREEN */
+  color: white;
+  border-color: #1f7a1f !important;
+}
+
+/* Wrong answer */
+.wrong {
+  background: #f44336 !important; /* RED */
+  color: white;
+  border-color: darkred !important;
+}
+
+/* NEXT Button */
+.next {
+  width: 20%;
+  margin-top: 30px;
+  padding: 15px;
+  font-size: 1.3rem;
+  background: #00c853;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.score {
+  display: none;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 50px;
+}

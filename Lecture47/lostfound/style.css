@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(120deg, #a18cd1, #f22357);
+    min-height: 100vh;
+    padding: 30px;
+}
+
+/* Container Box */
+.container {
+    max-width: 420px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(8px);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    color: #4a0278;
+    margin-bottom: 18px;
+}
+
+/* Radio Group */
+.radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.radio-btn {
+    background: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 1px solid #aaa;
+    transition: 0.3s;
+}
+
+.radio-btn:hover {
+    background: #f0e1ff;
+}
+
+.radio-btn input {
+    margin-right: 6px;
+}
+
+/* Input Group */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.input-group label {
+    margin-bottom: 4px;
+    font-weight: bold;
+    color: #4a0278;
+}
+
+.input-group input,
+textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #888;
+    outline: none;
+}
+
+textarea {
+    resize: none;
+    height: 70px;
+}
+
+/* Submit Button */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #4a0278;
+    color: white;
+    font-size: 17px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #a6b500;
+}
+
+/* Item List Cards */
+#item-listSection {
+    margin-top: 25px;
+    padding: 10px;
+}
+
+.item-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.item-card img {
+    width: 100%;
+    margin-top: 8px;
+    border-radius: 8px;
+}

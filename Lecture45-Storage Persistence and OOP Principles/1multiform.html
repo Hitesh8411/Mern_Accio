@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi Step Form</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .Forms {
+      background: #ffffff;
+      padding: 25px;
+      width: 350px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    input:focus {
+      border-color: #007bff;
+    }
+
+    .error {
+      font-size: 12px;
+      color: red;
+      text-align: left;
+      margin-top: -8px;
+      margin-bottom: 5px;
+    }
+
+    button {
+      margin: 7px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 15px;
+      cursor: pointer;
+      border: none;
+    }
+
+    #nextBtn {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    #backBtn {
+      background-color: #6c757d;
+      color: white;
+    }
+
+    #nextBtn:hover {
+      background-color: #0069d9;
+    }
+
+    #backBtn:hover {
+      background-color: #5a6268;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="Forms">
+    
+    <h2>Multi Step Form</h2>
+
+    <form class="form1">
+      <input type="text" id="fullName" placeholder="Enter Full Name"
+        data-required="true" data-error="Full name is required">
+      <span id="fullNameError" class="error"></span>
+
+      <input type="number" id="age" placeholder="Enter Age"
+        data-required="true" data-error="Age is required">
+      <span id="ageError" class="error"></span>
+    </form>
+
+
+    <form class="form2">
+      <input type="text" id="college" placeholder="Enter College Name"
+        data-required="true" data-error="College name is required">
+      <span id="collegeError" class="error"></span>
+
+      <input type="number" id="gradYear" placeholder="Enter Graduation Year"
+        data-required="true" data-error="Graduation year is required">
+      <span id="gradYearError" class="error"></span>
+    </form>
+
+
+    <form class="form3">
+      <input type="text" id="company" placeholder="Enter Company Name"
+        data-required="true" data-error="Company name is required">
+      <span id="companyError" class="error"></span>
+
+      <input type="number" id="experience" placeholder="Enter Experience (Years)"
+        data-required="true" data-error="Experience is required">
+      <span id="experienceError" class="error"></span>
+    </form>
+
+    <button type="button" id="backBtn">Back</button>
+    <button type="button" id="nextBtn">Next</button>
+  </div>
+
+  <script>
+    const form1 = document.querySelector(".form1");
+    const form2 = document.querySelector(".form2");
+    const form3 = document.querySelector(".form3");
+
+    form2.style.display = "none";
+    form3.style.display = "none";
+
+    const nextButton = document.getElementById("nextBtn");
+    const backButton = document.getElementById("backBtn");
+    let currentForm = 1;
+
+    function showForm(step) {
+      form1.style.display = step === 1 ? "flex" : "none";
+      form2.style.display = step === 2 ? "flex" : "none";
+      form3.style.display = step === 3 ? "flex" : "none";
+    }
+
+    function validateForm(form) {
+      let isValid = true;
+      form.querySelectorAll("input").forEach((input) => {
+        const errorSpan = document.getElementById(input.id + "Error");
+        errorSpan.textContent = "";
+        if (input.dataset.required === "true" && input.value.trim() === "") {
+          isValid = false;
+          errorSpan.textContent = input.dataset.error;
+        }
+      });
+      return isValid;
+    }
+
+    nextButton.addEventListener("click", () => {
+      if (currentForm === 1 && validateForm(form1)) {
+        currentForm = 2;
+      } else if (currentForm === 2 && validateForm(form2)) {
+        currentForm = 3;
+      } else if (currentForm === 3 && validateForm(form3)) {
+        alert("Form submission successfully!");
+        return;
+      }
+      showForm(currentForm);
+    });
+
+    backButton.addEventListener("click", () => {
+      if (currentForm > 1) currentForm--;
+      showForm(currentForm);
+    });
+
+    const inputs = document.querySelectorAll("input");
+    inputs.forEach((input) => {
+      input.addEventListener("input", () =>
+        sessionStorage.setItem(input.id, input.value)
+      );
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      inputs.forEach((input) => {
+        const savedValue = sessionStorage.getItem(input.id);
+        if (savedValue !== null) input.value = savedValue;
+      });
+    });
+  </script>
+</body>
+</html>

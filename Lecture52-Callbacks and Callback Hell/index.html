@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    const id = setInterval(() => {
+      const date = Date.now();
+      let diff = Date.now() - date;
+      console.log("start");
+
+      while (diff < 5000) {
+        diff = Date.now() - date;
+      }
+      console.log("end");
+    }, 100);
+    setTimeout(() => {
+      clearInterval(id);
+    }, 2000);
+
+    function setIntervalUsingSetTimeout() {
+      //tasks
+      const date = Date.now();
+      let diff = Date.now() - date;
+      console.log("start");
+
+      while (diff < 5000) {
+        diff = Date.now() - date;
+      }
+      console.log("end");
+      setTimeout(setIntervalUsingSetTimeout, 100);
+    }
+
+    //slideshow project implementation
+    // setTimeout(setIntervalUsingSetTimeout, 100);
+
+    function saveFormData(callback) {
+      // Saving  all personal details
+      setTimeout(() => {
+        console.log("Personal details saved");
+
+        // Saving  address details
+        setTimeout(() => {
+          console.log("Address details saved");
+
+          // Saving  payment details
+          setTimeout(() => {
+            console.log("Payment details saved");
+
+            // saving  order details
+            setTimeout(() => {
+              console.log("Order details saved");
+              callback();
+
+              //saving further details
+              setTimeout(() => {
+                console.log("Further details saved");
+              }, 2000);
+            }, 2000);
+          }, 2000);
+        }, 2000);
+      }, 2000);
+      savePersonDetails();
+    }
+    saveFormData(callbackfn);
+
+    //managing callbacks to prevent callback Hell ( the pyramid of doom)
+
+    function savePersonDetails() {
+      setTimeout(saveEducationDetails, 1000);
+    }
+
+    function saveEducationDetails() {
+      setTimeout(saveEducationDetails, 1000);
+    }
+    function saveWorkExperience() {
+
+    }
+    function  callbackAnErrorFunction(error,data) {
+        if(error) console.error(error);
+        else console.log(data);
+
+
+    }
+   function fetchUser() {
+    return { id:1, name:"vaibhav"};
+   }
+   function displayUser(errorCallbackFn) {
+    setTimeout(() => {
+        const userDetails = fetchuser () ;
+        if(userDetails) {
+            errorCallbackFn(null,userDetails);
+        }else {
+            errorCallbackFn("user not found", null);
+        }
+
+
+        },1000);
+    }
+   displayUser(callbackAnErrorFunction);
+   function callbackExecution () {
+    console.log("start");
+        setTimeout(() => {
+            console.lg("inside callback");
+        },0);
+        console.log("end");       
+        
+    
+   }
+  </script>
+</html>

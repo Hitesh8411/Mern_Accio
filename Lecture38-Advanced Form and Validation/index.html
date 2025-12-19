@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Forms and Validations</title>
+    <style>
+        body {
+            margin: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="password" id="" maxlength="10" />
+    <br>
+    <input type="date">
+    <br>
+    <input type="time">
+    <br>
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <br>
+    <input type="radio" name="mcq" value="optionA">
+    <input type="radio" name="mcq" value="optionB">
+    <input type="radio" name="mcq" value="optionC">
+    <input type="radio" name="mcq" value="optionD">
+    <br>
+    <input type="radio" name="mcq2" value="optionA">
+    <input type="radio" name="mcq2" value="optionB">
+    <input type="radio" name="mcq2" value="optionC">
+    <input type="radio" name="mcq2" value="optionD">
+    <br>
+    <select name="" id="">
+        <option value="">Select</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        <option>D</option>
+    </select>
+    <br>
+    <select name="" id="" multiple="true" size="4">
+        <option value="">Multiple Select</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        <option>D</option>
+    </select>
+    <br>
+    <input type="file">
+    <button>Submit</button>
+    <script>
+        const btn = document.querySelector("button");
+
+btn.addEventListener("click", () => {
+    const inputs = {};
+
+    inputs.password = document.querySelector("input[type=password]").value;
+
+    inputs.checkboxes = document.querySelectorAll("[type='checkbox']:checked");
+
+    inputs.dates = new Date(document.querySelector("input[type='date']").value);
+
+    inputs.time = document.querySelector("input[type='time']").value;
+
+    const r1 = document.querySelector("input[name='mcq']:checked");
+    inputs.radio1 = r1 ? r1.value : null;
+
+    const r2 = document.querySelector("input[name='mcq2']:checked");
+    inputs.radio2 = r2 ? r2.value : null;
+
+    // inputs.select = document.querySelector("select").value;
+
+    // inputs.multiSelect = Array.from(
+    //     document.querySelector("[multiple=true]").selectedOptions
+    // ).map(option => option.value);
+
+    // inputs.multiSelect =document.querySelector("[multiple=true").options;
+
+    // inputs.multiSelect = document.querySelector("[multiple=true]").options;
+
+    //     const array = [1, 3, 4, 5, 6];
+    //     console.log({ array });
+
+    //     console.log({
+    //         options: Array.from(inputs.multiSelect)
+    //     });
+
+
+
+
+
+    inputs.selectedOptions =  document.querySelector("select").value;
+    const multipleSelectedOptions = document.querySelector("[multiple=true]").options;
+
+    inputs.multipleSelectedOptions =Array.from(multipleSelectedOptions).filter((ele) => ele.selected).map((ele) => ele.value);
+
+
+
+            console.log(inputs);
+        });
+
+    </script>
+</body>
+
+</html>
+
+<!-- // filereader  -api used by browser 
+dataurl  
+
+When we use FileReader, it does not read the file path.
+
+Instead, it reads the actual file content from the user's device.
+
+Then it converts that content into a Base64-encoded string, which becomes a special URL called a DataURL.
+
+This DataURL can be used to display the file (like an image) directly in the browser without uploading it to a server.
+-->
+
+FileReader reads the actual file content from the user's device.it converts that content into a Base64 encoded string.which becomes a special URL called a DataURL.and DataURL can be used to display the file like an imadirectly in the browser without uploading it to a server.
+
+<!-- Input Type & Values
+
+Checkbox → use checked
+
+Radio → use checked
+
+Select dropdown → use value or selected option
+
+Password, Date, Time → use value
+
+ Homework
+
+Learn and practice focus event
+
+Learn and practice blur event 
+
+tab keyboard events
+
+-->

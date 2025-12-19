@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Showcase</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    main {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      background: #fff;
+    }
+
+    .card__image {
+      height: 120px;
+      background: #4cc0ff;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
+
+    .card__title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .card__description {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+   
+    @media screen and (max-width: 600px) {
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="card-grid" aria-label="New products">
+      <article class="card">
+        <div class="card__image"></div>
+        <h2 class="card__title">Mobile</h2>
+        <p class="card__description">Iqoo Neo 7 Pro - 8 gen 1</p>
+      </article>
+
+      <article class="card">
+        <div class="card__image"></div>
+        <h2 class="card__title">Watch</h2>
+        <p class="card__description">Samsung galaxy Ultra watch 5</p>
+      </article>
+
+      <article class="card">
+        <div class="card__image"></div>
+        <h2 class="card__title">Laptop</h2>
+        <p class="card__description">Asus Tuf Gaming A-15 </p>
+      </article>
+
+      <article class="card">
+        <div class="card__image"></div>
+        <h2 class="card__title">Ps5</h2>
+        <p class="card__description">Mere pass Nhi hai </p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

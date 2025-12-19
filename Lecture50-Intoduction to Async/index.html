@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Timeout Match</title>
+  </head>
+  <body>
+    <h3>Enter name within 8 seconds</h3>
+
+    <input type="text" id="nameInput" placeholder="Shelby" />
+    <p id="result"></p>
+
+    <script>
+      let correctName = "Shelby"; 
+      let userInput = "";
+
+      document
+        .getElementById("nameInput")
+        .addEventListener("input", function (e) {
+          userInput = e.target.value;
+        });
+
+      setTimeout(function () {
+        if (userInput === correctName) {
+          document.getElementById("result").innerText =
+            " Name matched in time!";
+        } else {
+          document.getElementById("result").innerText =
+            "Name not matched or time over!";
+        }
+      }, 8000);
+    </script>
+  </body>
+</html>

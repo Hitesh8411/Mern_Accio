@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reaction Time Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #gameArea {
+      margin: 30px auto;
+      width: 300px;
+      height: 200px;
+      border: 2px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    #box {
+      width: 80px;
+      height: 80px;
+      background-color: tomato;
+      display: none;
+      cursor: pointer;
+    }
+
+    #info {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    #bestTime {
+      margin-top: 10px;
+      font-size: 14px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Reaction Time Game ⚡</h1>
+  <p>Click the box as fast as you can when it appears!</p>
+
+  <button id="startBtn">Start Game</button>
+
+  <div id="gameArea">
+    <div id="box"></div>
+  </div>
+
+  <div id="info">Press "Start Game" to begin.</div>
+  <div id="bestTime"></div>
+
+  <script>
+    const startBtn = document.getElementById("startBtn");
+    const box = document.getElementById("box");
+    const info = document.getElementById("info");
+    const bestTimeDiv = document.getElementById("bestTime");
+
+    const BEST_KEY = "reaction_best_time";
+
+    let appearTime = 0; 
+    let timeoutId = null;
+
+    
+    function loadBestTime() {
+      const saved = localStorage.getItem(BEST_KEY);
+      if (saved !== null) {
+        bestTimeDiv.textContent = "Best time: " + saved + " ms (lower is better)";
+      } else {
+        bestTimeDiv.textContent = "Best time: ---";
+      }
+    }
+
+    loadBestTime();
+
+    function randomDelay() {
+      return 1000 + Math.random() * 2000;
+    }
+
+  
+    function scheduleBox() {
+      box.style.display = "none";
+      info.textContent = "Wait for the box to appear...";
+      timeoutId = setTimeout(() => {
+   
+        const area = document.getElementById("gameArea");
+        const maxX = area.clientWidth - box.offsetWidth;
+        const maxY = area.clientHeight - box.offsetHeight;
+
+        const randomX = Math.floor(Math.random() * maxX);
+        const randomY = Math.floor(Math.random() * maxY);
+
+        box.style.position = "absolute";
+        box.style.left = randomX + "px";
+        box.style.top = randomY + "px";
+
+        box.style.display = "block";
+        appearTime = Date.now();
+        info.textContent = "Click now!";
+      }, randomDelay());
+    }
+
+
+    startBtn.addEventListener("click", () => {
+      
+      clearTimeout(timeoutId);
+      box.style.display = "none";
+      info.textContent = "Get ready...";
+      scheduleBox();
+    });
+
+    
+    box.addEventListener("click", () => {
+      const clickTime = Date.now();
+      const reaction = clickTime - appearTime; // in ms
+
+      info.textContent = "Your time: " + reaction + " ms";
+
+      
+      const saved = localStorage.getItem(BEST_KEY);
+      if (saved === null || reaction < Number(saved)) {
+        localStorage.setItem(BEST_KEY, reaction);
+        bestTimeDiv.textContent = "Best time: " + reaction + " ms (new record!) 🎉";
+      } else {
+        bestTimeDiv.textContent = "Best time: " + saved + " ms";
+      }
+
+      box.style.display = "none";
+    });
+  </script>
+
+</body>
+</html>

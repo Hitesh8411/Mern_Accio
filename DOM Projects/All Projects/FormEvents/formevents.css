@@ -1,0 +1,114 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+  background: #f7f7f7;
+  padding: 30px;
+}
+
+/* Form Title */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form Box */
+#myForm {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Labels */
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+/* All Inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="date"],
+input[type="time"],
+input[type="file"],
+input[type="range"],
+input[type="color"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 15px;
+  transition: 0.25s ease;
+  background: #fafafa;
+}
+
+/* Focus Effect */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #4a90e2;
+  background: white;
+  outline: none;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+}
+
+/* Radio + Checkbox Styling */
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 8px;
+  transform: scale(1.2);
+}
+
+/* Textarea */
+textarea {
+  resize: vertical;
+}
+
+/* Submit Button */
+#submitBtn {
+  background: #4a90e2;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+#submitBtn:hover {
+  background: #357ac9;
+  transform: translateY(-1px);
+}
+
+/* Small Responsive Fix */
+@media (max-width: 500px) {
+  #myForm {
+    padding: 15px;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 14px;
+  }
+}

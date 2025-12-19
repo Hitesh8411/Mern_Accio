@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="Forms">
+        <form  class="form1">
+            <input type="text" id="fullName" placeholder="enter full name">
+            <input type="number" id="age" placeholder="enter age">
+            <!-- <button>Next</button> -->
+        </form>
+        <form class="form2">
+            <input type="text" id="college" placeholder="enter college name">
+            <input type="number" id="gradYear" placeholder="enter graduation year">
+            <!-- <button>Next</button> -->
+        </form>
+        <form class="form3">
+            <input type="text" id="company" placeholder="enter company name">
+            <input type="number" id="experience" placeholder="enter years of experience">
+
+            
+        </form>
+        <button>Next</button>
+    </div>
+
+    <script>
+        const form1 = document.querySelector('.form1');
+        const form2 = document.querySelector('.form2');
+        const form3 = document.querySelector('.form3');
+
+        form2.style.display = 'none';
+        form3.style.display = 'none';
+
+       //when user clicks on next button
+       const nextButton = document.querySelector('button');
+         let currentForm = 1;
+            nextButton.addEventListener('click', () => {
+                if(currentForm === 1) {
+                    form1.style.display = 'none';
+                    form2.style.display = 'block';
+                    currentForm++;
+                } else if(currentForm === 2) {
+                    form2.style.display = 'none';
+                    form3.style.display = 'block';
+                    currentForm++;
+                } else {
+                    alert('Form submission Sucessfully!!!!!!!!');
+                }
+            });
+            //store data in session storage
+            const inputs = document.querySelectorAll('input');  
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    sessionStorage.setItem(input.id, input.value);
+                });
+
+                //retrieve data from session storage on page load
+                window.addEventListener('load', () => {
+                    const savedValue = sessionStorage.getItem(input.id);
+                    if(savedValue) {
+                        input.value = savedValue;
+                    }
+                });
+            }); 
+    </script>
+</body>
+</html>
+
+<!-- use span tag where filled  the fields 
+ it should not go  furtherwhen any field is empty
+ //implement autosave 
+ dataset , dataatrributes
+ -->

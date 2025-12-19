@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <textarea name="" id=""></textarea>
+    <script>
+      function checkLocalStorage() {
+        try {
+          const key = "key";
+          const value = "value";
+          // const bigData ="A".repeat(25 * 1000 * 1000);
+          localStorage.setItem(key, value);
+
+          if (localStorage.getItem(key) === value) return true;
+
+          return false;
+        } catch (error) {
+          return false;
+        }
+      }
+
+      const autoSaveKey ="autoSaveKey";
+
+      const textarea =document.querySelector("textarea");
+      textarea.value =localStorage.getItem(autoSaveKey);
+
+      textarea.addEventListener("input",() => {
+        const newValue =textarea.value;
+        localStorage.setItem(autoSaveKey,newValue);
+      });
+
+      // Converting non string data into sttring , so that we can  store them in localstorage
+      // 1. Array
+      let arr=["hit","speed","run"];
+      localStorage.setItem("arr",arr.join(" "));
+      localStorage.getItem("arr").split(" ");
+      
+      // 2. Object
+        let obj ={name:"virat",age:35,role:"batsman"};
+        localStorage.setItem("obj",JSON.stringify(obj));
+        let retrievedObj =JSON.parse(localStorage.getItem("obj"));
+        console.log(retrievedObj);
+
+        //checking local storage availability
+    //     hasLocalStorage =("localStorage" in window) && window["localStorage"] !== null;
+    //     console.log("has local storage:",hasLocalStorage);
+    //   console.log(checkLocalStorage());
+
+    </script>
+  </body>
+</html>

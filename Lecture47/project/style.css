@@ -1,0 +1,40 @@
+body {
+  background: rgb(202, 200, 200);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+header {
+  width: 100%;
+  text-align: center;
+  background: rgb(205, 163, 55);
+  color: black;
+  padding: 30px 0;
+  font-size: 30px;
+}
+.container {
+  display: flex;
+  gap: 20px;
+}
+.form-container,
+.sidebar {
+  background: rgb(206, 206, 206);
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.sidebar {
+  max-height: 350px;
+}
+
+label {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid black;
+  font-size: 14px;
+}
+button {
+  width: auto;
+}

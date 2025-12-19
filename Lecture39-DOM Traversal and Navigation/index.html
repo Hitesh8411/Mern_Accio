@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="great-grand-parent accio">
+       <div class="grand-parent">
+
+            <div class="parent">
+            <div class="child">
+                child
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+    <div class="card">
+
+      <p class="title">Shoes</p>
+
+      <div class="buttons">
+
+        <button class="delete">Delete</button>
+
+        <button class="edit">Edit</button>
+
+      </div>
+
+    </div>
+    <script>
+        // getting the parent 
+        const child =document.querySelector(".child");
+        console.log(child.parentElement);
+
+        const parent =document.querySelector(".parent");
+        console.log(parent.parentElement);
+
+        const grandParent =document.querySelector(".grand-parent");
+        console.log(grandParent.parentElement);
+
+        // getting the paretn of body , which is html
+        console.log(document.body.parentElement);
+
+        // getting the parent of html , whic is null
+
+        console.log(document.body.parentElement.parentElement);
+
+
+        // closestclosest() is a DOM method that helps you find the nearest parent element (or itself) that matches a CSS selector.
+
+        // searches the selector from current node to all ancestors till root node
+
+        console.log(child.closest(".parent")); // gives the node of parent
+
+        console.log(child.closest("div")); //gives itself
+
+        // const accio = child.closest(".accio");
+        // console.log(accio)
+
+        // finding the parent of .child whose parent is body
+
+        let element = child;
+        while(element.parentElement !== document.body) {
+            element =element.parentElement;
+        }
+
+        element.classList.add("accio");
+        console.log(element);
+
+       //childNodes and children
+
+       const parent2=document.querySelector(".parent2");
+
+       console.log(parent2.childnode);
+
+       console.log(parent2.children);
+
+       console.log(parent2.firstElementChild);
+
+       console.log(parent2.lastElementChild);
+
+       //accessing second child
+
+       console.log(parent2.childern[1]);
+
+       // itrating theough al the children
+
+       for (let child of parent2.children) {
+        console.log(child.className);
+       }
+
+       // siblings 
+       const secondChild =parent2.children[1];
+       console.log("secondChild.previousElementSiblings");
+       console.log(secondChild.nextElementSibling);
+
+
+       // printing all the siblings of secondchild
+       
+       // exrecise : for the button.dlete div.card element  should be removed 
+
+       // closet application 
+       
+    
+       const deleteBtn = document.querySelector(".delete");
+
+       deleteBtn.addEventListener("click",(e)=>{
+        e.preventDefault();
+
+        deleteBtn.closest(".card");
+
+        div.remove();
+
+       });
+
+       console.log()
+
+
+    </script>
+</body>
+</html>
+
+<!-- explore properties (outerhtml like)
+ 
+hw/ naviagte in table 
+
+h/w try all properties of children, parent , siblings, closest()z
+
+h/w try to find the minimum and max value for above expression
+console.log(math.random)-->

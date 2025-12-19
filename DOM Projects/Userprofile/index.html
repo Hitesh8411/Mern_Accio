@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>User Profile Manager</h1>
+
+    <form id="profileForm">
+      <input type="text" id="name" placeholder="Full Name">
+      <input type="email" id="email" placeholder="Email">
+      <input type="number" id="age" placeholder="Age">
+      <textarea id="bio" placeholder="Short Bio"></textarea>
+
+      <button type="submit">Save Profile</button>
+      <button type="button" id="deleteProfile" class="delete">Delete Profile</button>
+    </form>
+
+    <div id="savedProfile" class="profile-box"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

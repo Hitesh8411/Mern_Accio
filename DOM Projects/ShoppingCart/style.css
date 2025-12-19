@@ -1,0 +1,23 @@
+body {
+  font-family: Arial;
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.product {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+button {
+  margin: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+li {
+  margin-bottom: 10px;
+}

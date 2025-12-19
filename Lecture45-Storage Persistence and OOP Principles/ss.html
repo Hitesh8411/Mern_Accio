@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>3-Step Form with Session Storage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 0 10px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .step {
+      display: none; /* hidden by default */
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 15px;
+    }
+    .step.active {
+      display: block; /* only active step is visible */
+    }
+    .step-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+    input {
+      width: 100%;
+      padding: 6px;
+      margin-top: 3px;
+      box-sizing: border-box;
+    }
+    .buttons {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+    }
+    button {
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 13px;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Multi-Step Form</h1>
+  <p>Refresh the page – data will stay in this tab (sessionStorage). ✅</p>
+
+  <!-- STEP 1: PERSONAL INFO -->
+  <div class="step" id="step-1">
+    <div class="step-title">Step 1 of 3 – Personal Info</div>
+
+    <label>
+      Full Name
+      <input type="text" data-field="fullName" placeholder="Enter your full name" />
+    </label>
+
+    <label>
+      Email
+      <input type="email" data-field="email" placeholder="Enter your email" />
+    </label>
+
+    <label>
+      Phone Number
+      <input type="tel" data-field="phone" placeholder="Enter your phone number" />
+    </label>
+
+    <div class="buttons">
+      <button type="button" id="next-1">Next ➡</button>
+    </div>
+  </div>
+
+  <!-- STEP 2: ACADEMIC INFO -->
+  <div class="step" id="step-2">
+    <div class="step-title">Step 2 of 3 – Academic Info</div>
+
+    <label>
+      Highest Qualification
+      <input type="text" data-field="qualification" placeholder="e.g. B.Tech, B.Sc" />
+    </label>
+
+    <label>
+      College / University
+      <input type="text" data-field="college" placeholder="Enter your college name" />
+    </label>
+
+    <label>
+      Graduation Year
+      <input type="number" data-field="gradYear" placeholder="e.g. 2024" />
+    </label>
+
+    <div class="buttons">
+      <button type="button" id="prev-2">⬅ Back</button>
+      <button type="button" id="next-2">Next ➡</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: EXPERIENCE INFO -->
+  <div class="step" id="step-3">
+    <div class="step-title">Step 3 of 3 – Experience Info</div>
+
+    <label>
+      Company Name
+      <input type="text" data-field="company" placeholder="Enter company name" />
+    </label>
+
+    <label>
+      Role / Position
+      <input type="text" data-field="role" placeholder="e.g. Intern, Developer" />
+    </label>
+
+    <label>
+      Years of Experience
+      <input type="number" data-field="experienceYears" placeholder="e.g. 1" />
+    </label>
+
+    <div class="buttons">
+      <button type="button" id="prev-3">⬅ Back</button>
+      <button type="button" id="submit-btn">Submit ✅</button>
+    </div>
+
+    <h3>Review (live data from sessionStorage):</h3>
+    <pre id="review-box"></pre>
+  </div>
+
+  <script>
+    const FORM_KEY = "threeStepFormData";
+    const STEP_KEY = "threeStepCurrentStep";
+
+    // default structure of all form fields
+    let formData = {
+      fullName: "",
+      email: "",
+      phone: "",
+      qualification: "",
+      college: "",
+      gradYear: "",
+      company: "",
+      role: "",
+      experienceYears: "",
+    };
+
+    let currentStep = 1;
+
+    // ========== ON PAGE LOAD ==========
+    window.addEventListener("DOMContentLoaded", () => {
+      // 1) Load saved form data (if any)
+      const savedData = sessionStorage.getItem(FORM_KEY);
+      if (savedData) {
+        formData = JSON.parse(savedData);
+      }
+
+      // 2) Load saved step (if any)
+      const savedStep = sessionStorage.getItem(STEP_KEY);
+      if (savedStep) {
+        currentStep = Number(savedStep);
+      }
+
+      // 3) Fill inputs with stored values
+      restoreInputsFromData();
+
+      // 4) Show correct step
+      showStep(currentStep);
+
+      // 5) Attach listeners to inputs + buttons
+      attachInputListeners();
+      attachButtonListeners();
+
+      // 6) Update review box (in case we are on step 3)
+      updateReviewBox();
+    });
+
+    // ========= SHOW / HIDE STEPS =========
+    function showStep(stepNumber) {
+      document.querySelectorAll(".step").forEach((step) => {
+        step.classList.remove("active");
+      });
+
+      const stepDiv = document.getElementById(`step-${stepNumber}`);
+      if (stepDiv) {
+        stepDiv.classList.add("active");
+      }
+
+      // Save current step
+      sessionStorage.setItem(STEP_KEY, stepNumber);
+
+      // If last step, update review
+      if (stepNumber === 3) {
+        updateReviewBox();
+      }
+    }
+
+    // ========= INPUT LISTENERS =========
+    function attachInputListeners() {
+      const inputs = document.querySelectorAll("input[data-field]");
+      inputs.forEach((input) => {
+        const field = input.getAttribute("data-field");
+
+        input.addEventListener("input", (e) => {
+          formData[field] = e.target.value;
+          sessionStorage.setItem(FORM_KEY, JSON.stringify(formData));
+          if (currentStep === 3) {
+            updateReviewBox();
+          }
+        });
+      });
+    }
+
+    // ========= RESTORE VALUES ON LOAD =========
+    function restoreInputsFromData() {
+      const inputs = document.querySelectorAll("input[data-field]");
+      inputs.forEach((input) => {
+        const field = input.getAttribute("data-field");
+        if (formData[field]) {
+          input.value = formData[field];
+        }
+      });
+    }
+
+    // ========= BUTTON LISTENERS =========
+    function attachButtonListeners() {
+      document.getElementById("next-1").addEventListener("click", () => {
+        currentStep = 2;
+        showStep(currentStep);
+      });
+
+      document.getElementById("next-2").addEventListener("click", () => {
+        currentStep = 3;
+        showStep(currentStep);
+      });
+
+      document.getElementById("prev-2").addEventListener("click", () => {
+        currentStep = 1;
+        showStep(currentStep);
+      });
+
+      document.getElementById("prev-3").addEventListener("click", () => {
+        currentStep = 2;
+        showStep(currentStep);
+      });
+
+      document.getElementById("submit-btn").addEventListener("click", () => {
+        alert("Form submitted!\n\n" + JSON.stringify(formData, null, 2));
+
+        // Optional: clear everything after submit
+        // sessionStorage.removeItem(FORM_KEY);
+        // sessionStorage.removeItem(STEP_KEY);
+        // location.reload();
+      });
+    }
+
+    // ========= REVIEW BOX =========
+    function updateReviewBox() {
+      const box = document.getElementById("review-box");
+      if (box) {
+        box.textContent = JSON.stringify(formData, null, 2);
+      }
+    }
+  </script>
+</body>
+</html>

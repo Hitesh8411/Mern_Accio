@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Grid</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f172a; /* dark blue */
+      color: #e5e7eb;
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page {
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    .products-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .products-header h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .products-header p {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin-top: 4px;
+    }
+
+    /* Button (top-right + bottom if needed) */
+    .btn {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 500;
+      background: #22c55e;
+      color: #022c22;
+      box-shadow: 0 8px 16px rgba(34, 197, 94, 0.3);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background: #16a34a;
+      transform: translateY(-1px);
+      box-shadow: 0 12px 20px rgba(34, 197, 94, 0.35);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 10px rgba(34, 197, 94, 0.25);
+    }
+
+    /* Products grid */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .product {
+      background: #020617;
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.9);
+      border-color: rgba(94, 234, 212, 0.4);
+    }
+
+    .product-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0ea5e9, #22c55e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .product-body {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .product-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #f9fafb;
+    }
+
+    .product-meta {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price {
+      font-weight: 600;
+      color: #a5b4fc;
+    }
+
+    .badge {
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .product-footer {
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stock {
+      font-size: 0.8rem;
+      color: #6ee7b7;
+    }
+
+    .buy-btn {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: #38bdf8;
+      color: #082f49;
+      transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 8px 16px rgba(56, 189, 248, 0.3);
+    }
+
+    .buy-btn:hover {
+      background: #0ea5e9;
+      transform: translateY(-1px);
+      box-shadow: 0 12px 20px rgba(56, 189, 248, 0.4);
+    }
+
+    .buy-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 5px 12px rgba(56, 189, 248, 0.25);
+    }
+
+    /* Bottom Add button */
+    .bottom-actions {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Small toast display */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(15, 23, 42, 0.95);
+      color: #e5e7eb;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.9);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 50;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="products-header">
+      <div>
+        <h1>Featured Products</h1>
+        <p>9 hard-coded + 3 dynamic cards. Click any “Buy Now” button.</p>
+      </div>
+      <button class="btn" id="addProductsTop">+ Add 3 Products</button>
+    </div>
+
+    <div class="products" id="products">
+      <!-- 9 hard-coded product cards -->
+      <div class="product">
+        <div class="product-img">1</div>
+        <div class="product-body">
+          <div class="product-title">Product 1</div>
+          <div class="product-meta">
+            <span class="price">₹499</span>
+            <span class="badge">Popular</span>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="stock">In stock</span>
+          <button class="buy-btn">Buy Now</button>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-img">2</div>
+        <div class="product-body">
+          <div class="product-title">Product 2</div>
+          <div class="product-meta">
+            <span class="price">₹599</span>
+            <span class="badge">New</span>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="stock">In stock</span>
+          <button class="buy-btn">Buy Now</button>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-img">3</div>
+        <div class="product-body">
+          <div class="product-title">Product 3</div>
+          <div class="product-meta">
+            <span class="price">₹699</span>
+            <span class="badge">Limited</span>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="stock">Few left</span>
+          <button class="buy-btn">Buy Now</button>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-img">4</div>
+        <div class="product-body">
+          <div class="product-title">Product 4</div>
+          <div class="product-meta">
+            <span class="price">₹799</span>
+            <span class="badge">Bestseller</span>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="stock">In stock</span>
+          <button class="buy-btn">Buy Now</button>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-img">5</div>
+        <div class="product-body">
+          <div class="product-title">Product 5</div>
+          <div class="product-meta">
+            <span class="price">₹899</span>
+            <span class="badge">Trending</span>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="stock">Few left</span>
+          <button class="buy-btn">Buy Now</button>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-img">6</div>
+        <div class="product-body">
+          <div class="product-title">Product 6</div>
+          <div class="product-meta">
+            <span class="price">₹999</span>
+            <span class="badge">Hot</span>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="stock">In stock</span>
+          <button class="buy-btn">Buy Now</button>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-img">7</div>
+        <div class="product-body">
+          <div class="product-title">Product 7</div>
+          <div class="product-meta">
+            <span class="price">₹1099</span>
+            <span class="badge">New</span>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="stock">In stock</span>
+          <button class="buy-btn">Buy Now</button>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-img">8</div>
+        <div class="product-body">
+          <div class="product-title">Product 8</div>
+          <div class="product-meta">
+            <span class="price">₹1199</span>
+            <span class="badge">Popular</span>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="stock">Low stock</span>
+          <button class="buy-btn">Buy Now</button>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="product-img">9</div>
+        <div class="product-body">
+          <div class="product-title">Product 9</div>
+          <div class="product-meta">
+            <span class="price">₹1299</span>
+            <span class="badge">Bestseller</span>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="stock">In stock</span>
+          <button class="buy-btn">Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-actions">
+      <button class="btn" id="addProductsBottom">+ Add 3 More Products</button>
+    </div>
+
+    <div class="toast" id="toast"></div>
+  </div>
+
+  <script>
+    const productsContainer = document.getElementById("products");
+    const addTop = document.getElementById("addProductsTop");
+    const addBottom = document.getElementById("addProductsBottom");
+    const toast = document.getElementById("toast");
+
+    let productCount = 9; // 9 hard-coded products already
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 1800);
+    }
+
+    function createProductCard(num) {
+      const product = document.createElement("div");
+      product.classList.add("product");
+
+      product.innerHTML = `
+        <div class="product-img">${num}</div>
+        <div class="product-body">
+          <div class="product-title">Product ${num}</div>
+          <div class="product-meta">
+            <span class="price">₹${499 + (num - 1) * 100}</span>
+            <span class="badge">New</span>
+          </div>
+        </div>
+        <div class="product-footer">
+          <span class="stock">In stock</span>
+          <button class="buy-btn">Buy Now</button>
+        </div>
+      `;
+
+      return product;
+    }
+
+    function addThreeProducts() {
+      for (let i = 0; i < 3; i++) {
+        productCount++;
+        const card = createProductCard(productCount);
+        productsContainer.appendChild(card);
+      }
+      showToast("Added 3 new products!");
+    }
+
+    // Both buttons add products
+    addTop.addEventListener("click", addThreeProducts);
+    addBottom.addEventListener("click", addThreeProducts);
+
+    // EVENT DELEGATION: handle clicks from ANY Buy button (hard-coded + new)
+    productsContainer.addEventListener("click", (event) => {
+      if (event.target.classList.contains("buy-btn")) {
+        const productCard = event.target.closest(".product");
+        const titleEl = productCard.querySelector(".product-title");
+        const priceEl = productCard.querySelector(".price");
+
+        const title = titleEl ? titleEl.textContent : "Unknown";
+        const price = priceEl ? priceEl.textContent : "";
+
+        showToast(`Selected: ${title} (${price})`);
+        console.log("Button clicked for:", title, price);
+      }
+    });
+  </script>
+</body>
+</html>
