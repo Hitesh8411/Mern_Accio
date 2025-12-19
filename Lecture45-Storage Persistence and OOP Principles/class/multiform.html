@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multi Level Forms</title>
+  </head>
+  <body>
+    <div class="forms">
+      <!-- h1 is for form-title -->
+      <h1></h1>
+      <form class="personal-details" data-form-name="Personal Details">
+        <input type="text" id="full-name" placeholder="Enter full name" />
+        <input type="number" id="age" placeholder="Enter age" />
+      </form>
+      <form class="educational-details" data-form-name="Educational Details">
+        <input type="text" id="college name" placeholder="Enter college name" />
+        <input
+          type="number"
+          id="college-percentage"
+          placeholder="Enter percentage"
+        />
+      </form>
+      <form class="work-experience" data-form-name="Work Experience">
+        <input type="text" id="company name" placeholder="Enter company name" />
+        <input
+          type="number"
+          id="total-experience"
+          placeholder="total experience in months"
+        />
+      </form>
+      <button>Next</button>
+    </div>
+    <script>
+      const personalDetails = document.querySelector(".personal-details");
+      const educationalDetails = document.querySelector(".educational-details");
+      const workExperience = document.querySelector(".work-experience");
+      const formTitle = document.querySelector("h1");
+      const nextButton = document.querySelector("button");
+      const forms = [personalDetails, educationalDetails, workExperience];
+      let currentForm = 0;
+
+      /* checking which form data are already stored in sessionStorage */
+      for (let i = 0; i < forms.length; i++) {
+        const form = forms[i];
+        const firstChildOfThisForm = form.firstElementChild;
+        console.log(firstChildOfThisForm);
+
+        if (!sessionStorage.getItem(firstChildOfThisForm.id)) {
+          currentForm = i;
+          break;
+        }
+      }
+      console.log({ currentForm });
+
+      /* hiding all the forms except currentForm */
+      for (let i = 0; i < forms.length; i++) {
+        if (i != currentForm) forms[i].style.display = "none";
+      }
+
+      /* setting the title of currentForm */
+      formTitle.textContent = forms[currentForm].dataset.formName;
+
+      /* defining what next button will do
+      - checks if all fields of currentForm are filled or not
+      - if yes, then stores all the data from this form inside sessionStorage
+      - if not, alerts the user to fill all the details
+      - changes the display of currentForm to none and goes to next form and changes its display to block
+
+      */
+      nextButton.addEventListener("click", () => {
+        let allFieldsFilled = true;
+        for (let i of forms[currentForm].children) {
+          const element = i;
+          if (element.value?.length === 0) allFieldsFilled = false;
+          sessionStorage.setItem(element.id, element.value);
+        }
+        if (!allFieldsFilled) {
+          alert("Please fill all the details");
+          return;
+        }
+
+        for (let i of forms[currentForm].children) {
+          const element = i;
+          sessionStorage.setItem(element.id, element.value);
+        }
+
+        if (currentForm === forms.length - 1) {
+          console.log("All forms submitted successfully");
+          sessionStorage.clear();
+          return;
+        }
+        forms[currentForm].style.display = "none";
+        currentForm++;
+        forms[currentForm].style.display = "block";
+        formTitle.textContent = forms[currentForm].dataset.formName;
+      });
+    </script>
+  </body>
+</html>

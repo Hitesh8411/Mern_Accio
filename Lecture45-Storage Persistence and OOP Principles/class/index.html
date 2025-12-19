@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <textarea></textarea>
+
+    <script>
+      function checkLocalStorage() {
+        try {
+          const key = "key";
+          const value = "value";
+          //   const bigData = "A".repeat(25 * 1000 * 1000);
+          localStorage.setItem(key, value);
+
+          if (localStorage.getItem(key) === value) return true;
+
+          return false;
+        } catch (error) {
+          return false;
+        }
+      }
+
+      const autoSaveKey = "autoSaveKey";
+      const textarea = document.querySelector("textarea");
+
+      textarea.value = localStorage.getItem(autoSaveKey);
+
+      textarea.addEventListener("input", () => {
+        const newValue = textarea.value;
+        localStorage.setItem(autoSaveKey, newValue);
+      });
+
+      console.log(checkLocalStorage());
+
+      /* Converting non string data into string, so that we can store them in localStorage */
+      //array
+      const arr = [2, 3, 34, 4, 3, 2, 12121];
+      localStorage.setItem("arr", arr.join(" "));
+      localStorage.getItem("arr").split(" ");
+
+      //object
+      const obj = {
+        name: "Vaibhav",
+        age: 23,
+      };
+
+      console.log("wdewdwe", localStorage.getItem("dheufhif"));
+
+      const objInString = JSON.stringify(obj);
+      localStorage.setItem("obj", objInString);
+      console.log(JSON.parse(localStorage.getItem("obj")));
+    </script>
+  </body>
+</html>
