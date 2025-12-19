@@ -1,29 +1,23 @@
-
-
-
-
 // construtor
 //  when make construtor function first letter of function should be capitalized    (not necessary but good practice)
-function User(name,age) {
-    this.name =name;
-    this.age =age;
+function User(name, age) {
+  this.name = name;
+  this.age = age;
 }
 
-const user1=new User('John',30);
-const user2=new User('Jane',25);
+const user1 = new User("John", 30);
+const user2 = new User("Jane", 25);
 
 console.log(user1);
 console.log(user2);
 
-
 function normalFunction() {
-    console.log(this);
+  console.log(this);
 }
 
 console.log(normalFunction());
 
-// this new keyword 
-
+// this new keyword
 
 // In a normal function this refers to the window object in the browser.
 
@@ -34,7 +28,6 @@ console.log(normalFunction());
 // When a function is called using the new keyword, this points to a
 
 // new empty object, and properties are added to that object.
-
 
 // when we use new it creates the new object
 
@@ -48,50 +41,37 @@ console.log(normalFunction());
 
 // same as object {name:Hitesh}
 
-
 // creating an array of objects using construuctor
 
-//create an array of objects using constructor 
+//create an array of objects using constructor
 
-const names = ["rahul","tanmay","tejas","kunal"];
+const names = ["rahul", "tanmay", "tejas", "kunal"];
 
-const age=[12,32,10,13];
+const age = [12, 32, 10, 13];
 
-const city=["Pune","delhi","mumbai","goa"];
+const city = ["Pune", "delhi", "mumbai", "goa"];
 
- 
+const objArr = [];
 
-const objArr=[];
-
-for(let i=0;i<names.length;i++){
-
-  objArr.push(new User(names[i],age[i],city[i])) ;  
-
+for (let i = 0; i < names.length; i++) {
+  objArr.push(new User(names[i], age[i], city[i]));
 }
-
- 
 
 console.log(objArr);
 
-
 function Test() {
-    this.value =10;
+  this.value = 10;
 }
 
-Test.prototype.value =100;
+Test.prototype.value = 100;
 
 const test = new Test();
-console.log(test.value)
+console.log(test.value);
 
-delete  test.value;
-console.log(test.value)
-
+delete test.value;
+console.log(test.value);
 
 // mixing up construtor and prtoptypes
-
-
-
-
 
 // Concept ->	Meaning
 // constructor	initializes object values
@@ -102,6 +82,5 @@ console.log(test.value)
 
 // what is instances?
 // A real object created from a class using the new keyword.
-
 
 // A constructor is needed to initialize object properties automatically at the time of object creation, ensuring each object has its own independent data.
