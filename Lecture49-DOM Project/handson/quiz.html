@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Simple Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 700px; }
+    .question { margin-bottom: 12px; }
+    .options ul { list-style: none; padding: 0; }
+    .options li {
+      padding: 8px 10px; margin: 6px 0; border: 1px solid #ccc; border-radius: 6px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .options li.selected { background:#e0f0ff; border-color:#66aaff; }
+    .buttons { margin-top: 12px; }
+    .buttons button { padding:8px 12px; margin-right:10px; }
+    .meta { margin-top: 8px; color:#666; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+  <div class="quiz">
+    <div class="question"><p>Question text will appear here</p></div>
+    <div class="options"><ul></ul></div>
+    <div class="buttons">
+      <button id="prevBtn">Previous</button>
+      <button id="nextBtn">Next</button>
+      <button id="submitBtn">Submit</button>
+    </div>
+    <div class="meta"><span id="progress"></span></div>
+  </div>
+
+<script>
+/* ---------------------------
+   Data model
+   --------------------------- */
+class Question {
+  constructor(id, text, options, correctOption, type = "single") {
+    this.id = id;
+    this.text = text;
+    this.options = options;
+    this.correctOption = correctOption;
+    this.type = type; // "single" or "multiple"
+  }
+}
+
+// sample questions
+const questions = [
+  new Question(
+    1,
+    "Which color Alto do you have?",
+    ["Red", "Blue", "White", "Black"],
+    "Red",
+    "single"
+  ),
+  new Question(
+    2,
+    "Select the colors you like:",
+    ["Red", "Blue", "White", "Black"],
+    ["Red", "Blue"],
+    "multiple"
+  ),
+  new Question(
+    3,
+    "What is the capital of France?",
+    ["Berlin", "Madrid", "Paris", "Rome"],
+    "Paris",
+    "single"
+  ),
+  new Question(
+    4,
+    "Select the prime numbers:",
+    ["2", "3", "4", "5"],
+    ["2", "3", "5"],
+    "multiple"
+  ),
+  new Question(
+    5,
+    "Which planet is known as the Red Planet?",
+    ["Earth", "Mars", "Jupiter", "Saturn"],
+    "Mars",
+    "single"
+  ),
+];
+
+/* ---------------------------
+   Quiz logic
+   --------------------------- */
+class Quiz {
+  constructor({ questions = [], duration = 0 } = {}) {
+    this.questions = questions;
+    this.duration = duration;
+    this.userResponse = {}; // { questionIndex: "option" | ["opt1","opt2"] }
+    this.score = 0;
+    this.currentQuesIndex = 0;
+  }
+
+  start() {
+    this.renderCurrentQuestion();
+    this.updateProgress();
+  }
+
+  renderCurrentQuestion() {
+    const idx = this.currentQuesIndex;
+    const question = this.questions[idx];
+    const quetionTextElement = document.querySelector(".question p");
+    quetionTextElement.textContent = question.text;
+    this.displayOptions(idx);
+    this.updateProgress();
+  }
+
+  displayOptions(qIdx) {
+    const optionsUl = document.querySelector(".options ul");
+    const options = this.questions[qIdx].options;
+    const saved = this.userResponse[qIdx]; // undefined | string | array
+
+    optionsUl.innerHTML = options.map((option, i) => {
+      // mark as selected if saved
+      let selectedClass = "";
+      if (Array.isArray(saved) && saved.includes(option)) selectedClass = "selected";
+      if (!Array.isArray(saved) && saved === option) selectedClass = "selected";
+
+      // put data-option attribute so event handler can know which option was clicked
+      return `<li data-option-index="${i}" data-option="${escapeHtml(option)}" class="${selectedClass}">${escapeHtml(option)}</li>`;
+    }).join("");
+  }
+
+  previousQuestion() {
+    if (this.currentQuesIndex > 0) {
+      this.currentQuesIndex--;
+      this.renderCurrentQuestion();
+    }
+  }
+
+  nextQuestion() {
+    if (this.currentQuesIndex < this.questions.length - 1) {
+      this.currentQuesIndex++;
+      this.renderCurrentQuestion();
+    }
+  }
+
+  submit() {
+    this.calculateScore();
+    alert(`You scored ${this.score} / ${this.questions.length}`);
+  }
+
+  // capture a click on an option (optionText is the raw option string)
+  captureUserResponse(optionText) {
+    const idx = this.currentQuesIndex;
+    const q = this.questions[idx];
+
+    if (q.type === "multiple") {
+      // toggle option in an array
+      if (!Array.isArray(this.userResponse[idx])) this.userResponse[idx] = [];
+      const arr = this.userResponse[idx];
+      const pos = arr.indexOf(optionText);
+      if (pos === -1) arr.push(optionText);
+      else arr.splice(pos, 1);
+    } else {
+      // single-choice: store string
+      this.userResponse[idx] = optionText;
+    }
+
+    // re-render options to update selected class
+    this.displayOptions(idx);
+  }
+
+  calculateScore() {
+    let score = 0;
+    this.questions.forEach((q, idx) => {
+      const resp = this.userResponse[idx];
+      if (q.type === "multiple") {
+        if (!Array.isArray(resp)) return; // no answer or wrong type
+        // compare arrays irrespective of order
+        const expected = Array.isArray(q.correctOption) ? q.correctOption : [q.correctOption];
+        if (arraysEqualIgnoreOrder(expected, resp)) score++;
+      } else {
+        if (resp === q.correctOption) score++;
+      }
+    });
+    this.score = score;
+  }
+
+  updateProgress() {
+    const progress = document.getElementById("progress");
+    progress.textContent = `Question ${this.currentQuesIndex + 1} of ${this.questions.length}`;
+  }
+}
+
+/* ---------------------------
+   Helpers
+   --------------------------- */
+function arraysEqualIgnoreOrder(a, b) {
+  if (!Array.isArray(a) || !Array.isArray(b)) return false;
+  if (a.length !== b.length) return false;
+  const sortA = [...a].map(String).sort();
+  const sortB = [...b].map(String).sort();
+  for (let i = 0; i < sortA.length; i++) if (sortA[i] !== sortB[i]) return false;
+  return true;
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+/* ---------------------------
+   Wire up UI
+   --------------------------- */
+const quiz = new Quiz({ questions: questions, duration: 60 });
+quiz.start();
+
+const optionsUl = document.querySelector(".options ul");
+const prevButton = document.getElementById("prevBtn");
+const nextButton = document.getElementById("nextBtn");
+const submitButton = document.getElementById("submitBtn");
+
+// click on an option (event delegation)
+optionsUl.addEventListener("click", (e) => {
+  const li = e.target.closest("li");
+  if (!li) return;
+  const optionText = li.getAttribute("data-option");
+  quiz.captureUserResponse(optionText);
+});
+
+// prev / next
+prevButton.addEventListener("click", () => quiz.previousQuestion());
+nextButton.addEventListener("click", () => quiz.nextQuestion());
+submitButton.addEventListener("click", () => quiz.submit());
+
+</script>
+
+</body>
+</html>
