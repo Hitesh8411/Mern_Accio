@@ -153,3 +153,5 @@ class Person {
 
 const vaibhav = new Person(212122, personalDetails, educationalDetails);
 vaibhav.print();
+
+
