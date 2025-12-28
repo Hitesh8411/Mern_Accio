@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee OOP</title>
+  </head>
+  <body>
+    <p>Employee</p>
+    <button id="empCheckIn">Check In</button>
+    <button id="empCheckOut">Check Out</button>
+
+    <p>Manager</p>
+    <button id="mgrCheckIn">Check In</button>
+    <button id="mgrCheckOut">Check Out</button>
+
+    <script>
+      // ===== Employee & Manager =====
+      //   class Employee {
+      //     constructor({ name, age, designation, salary, gender, joiningDate }) {
+      //       this.name = name;
+      //       this.age = age;
+      //       this.designation = designation;
+      //       this.salary = salary;
+      //       this.gender = gender;
+      //       this.joiningDate = joiningDate;
+      //     }
+
+      //     checkIn(time) {
+      //       this.checkInTime = time.toLocaleString();
+      //     }
+
+      //     checkOut(time) {
+      //       this.checkOutTime = time.toLocaleString();
+      //     }
+      //   }
+
+      //   const emp1 = new Employee(
+      //     "Hitesh",
+      //     22,
+      //     "Developer",
+      //     650000,
+      //     "Male",
+      //     "01-01-2020"
+      //   );
+      //   console.log("Employee:", emp1);
+
+      //   const empCheckInBtn = document.getElementById("empCheckIn");
+      //   const empCheckOutBtn = document.getElementById("empCheckOut");
+
+      //   empCheckInBtn.addEventListener("click", () => {
+      //     emp1.checkIn(new Date());
+      //     console.log(`Employee Checked In at: ${emp1.checkInTime}`);
+      //   });
+
+      //   empCheckOutBtn.addEventListener("click", () => {
+      //     emp1.checkOut(new Date());
+      //     console.log(`Employee Checked Out at: ${emp1.checkOutTime}`);
+      //   });
+
+      //   const employeeDetails = {
+      //     name: "Riya",
+      //     age: 30,
+      //     designation: "Manager",
+      //     salary: 900000,
+      //     gender: "Female",
+      //     joiningDate: "01-06-2018",
+      //   };
+
+      //   class Manager extends Employee {
+      //     constructor({ details, subordinates }) {
+      //       super(
+      //         details.name,
+      //         details.age,
+      //         details.designation,
+      //         details.salary,
+      //         details.gender,
+      //         details.joiningDate
+      //       );
+      //       this.subordinates = subordinates;
+      //     }
+      //   }
+
+      //   const manager1 = new Manager(employeeDetails, ["E1", "E2", "E3"]);
+      //   console.log("Manager:", manager1);
+
+      //   const mgrCheckInBtn = document.getElementById("mgrCheckIn");
+      //   const mgrCheckOutBtn = document.getElementById("mgrCheckOut");
+
+      //   mgrCheckInBtn.addEventListener("click", () => {
+      //     manager1.checkIn(new Date());
+      //     console.log(`Manager Checked In at: ${manager1.checkInTime}`);
+      //   });
+
+      //   mgrCheckOutBtn.addEventListener("click", () => {
+      //     manager1.checkOut(new Date());
+      //     console.log(`Manager Checked Out at: ${manager1.checkOutTime}`);
+      //   });
+
+      // ===== Animal, Dog, Cat =====
+      class Animal {
+        constructor({ name, age, color, speed }) {
+          this.name = name;
+          this.age = age;
+          this.color = color;
+          this.speed = speed;
+        }
+      }
+
+      const dogDetails = {
+        name: "Dogesh",
+        age: 3,
+        color: "brown",
+        speed: 40,
+      };
+
+      class Dog extends Animal {
+        constructor({ dogDetails, sound }) {
+          super(dogDetails);
+        }
+      }
+
+      const dog = new Dog({ dogDetails, sound: "bark" });
+      console.log("Dog:", dog);
+
+      const catDetails = {
+        name: "bagad billa",
+        age: 2,
+        sound: "meow",
+        color: "white",
+        speed: 30,
+      };
+
+      class Cat extends Animal {
+        constructor({ catDetails, sound }) {
+          super(catDetails);
+        }
+      }
+
+      const cat = new Cat({ catDetails, sound: "meow" });
+      console.log("Cat:", cat);
+    </script>
+  </body>
+</html>
